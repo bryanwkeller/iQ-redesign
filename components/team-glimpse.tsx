@@ -54,12 +54,12 @@ export function TeamGlimpse() {
               transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
               className="group"
             >
-              <div className="aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-md">
+              <div className="aspect-[3/4] rounded-xl overflow-hidden mb-4 shadow-md relative">
                 <Image
                   src={leader.image}
                   alt={`${leader.name} - ${leader.title}`}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
