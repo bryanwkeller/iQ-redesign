@@ -2,25 +2,25 @@ import { Navigation } from "@/components/navigation"
 import { Hero } from "@/components/hero"
 import { TrustBar } from "@/components/trust-bar"
 import { Services } from "@/components/services"
-import { AICapabilities } from "@/components/ai-capabilities"
+import { HumanAI } from "@/components/human-ai"
 import { Results } from "@/components/results"
 import { CaseStudies } from "@/components/case-studies"
+import { TeamGlimpse } from "@/components/team-glimpse"
 import { ContactCTA } from "@/components/contact-cta"
 import { Footer } from "@/components/footer"
-import { AnimatedBackground } from "@/components/animated-background"
 
 export default function Home() {
   return (
     <>
-      <AnimatedBackground />
       <Navigation />
       <main className="relative">
         <Hero />
         <TrustBar />
         <Services />
-        <AICapabilities />
+        <HumanAI />
         <Results />
         <CaseStudies />
+        <TeamGlimpse />
         <ContactCTA />
       </main>
       <Footer />

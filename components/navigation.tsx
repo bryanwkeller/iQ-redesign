@@ -23,7 +23,6 @@ export function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
 
-      // Detect active section
       const sections = navLinks.map((link) => link.href.replace("#", ""))
       for (const section of sections.reverse()) {
         const element = document.getElementById(section)
@@ -55,7 +54,6 @@ export function Navigation() {
         behavior: "smooth",
       })
 
-      // Update URL without triggering scroll
       window.history.pushState(null, "", href)
     }
 
@@ -68,7 +66,7 @@ export function Navigation() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-[#0a0a1a]/90 backdrop-blur-xl border-b border-white/5"
+        ? "bg-background/95 backdrop-blur-sm border-b border-border shadow-sm"
         : "bg-transparent"
         }`}
     >
@@ -81,14 +79,8 @@ export function Navigation() {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center relative overflow-hidden">
-                <span className="text-primary-foreground font-bold text-lg relative z-10">i</span>
-                <motion.div
-                  className="absolute inset-0 bg-white/20"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.5 }}
-                />
+              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-lg">i</span>
               </div>
               <span className="text-xl font-bold text-foreground">Quanti</span>
             </motion.div>
@@ -104,14 +96,14 @@ export function Navigation() {
                     href={link.href}
                     onClick={(e) => scrollToSection(e, link.href)}
                     className={`relative px-4 py-2 text-sm transition-colors rounded-full ${isActive
-                      ? "text-foreground"
+                      ? "text-foreground font-medium"
                       : "text-muted-foreground hover:text-foreground"
                       }`}
                   >
                     {isActive && (
                       <motion.div
                         layoutId="activeSection"
-                        className="absolute inset-0 bg-white/10 rounded-full"
+                        className="absolute inset-0 bg-secondary rounded-full"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -128,14 +120,8 @@ export function Navigation() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <Button size="sm" className="relative overflow-hidden group">
-              <span className="relative z-10">Let's Talk</span>
-              <motion.div
-                className="absolute inset-0 bg-white/20"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{ duration: 0.4 }}
-              />
+            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
+              {"Let's Talk"}
             </Button>
           </motion.div>
 
@@ -180,9 +166,9 @@ export function Navigation() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-background"
             >
-              <div className="py-4 border-t border-white/5">
+              <div className="py-4 border-t border-border">
                 <motion.div
                   className="flex flex-col gap-2"
                   initial="closed"
@@ -205,7 +191,7 @@ export function Navigation() {
                       <a
                         href={link.href}
                         onClick={(e) => scrollToSection(e, link.href)}
-                        className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-white/5 rounded-lg transition-colors"
+                        className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
                       >
                         {link.label}
                       </a>
@@ -216,10 +202,10 @@ export function Navigation() {
                       open: { opacity: 1, x: 0 },
                       closed: { opacity: 0, x: -20 },
                     }}
-                    className="pt-2"
+                    className="pt-2 px-4"
                   >
-                    <Button size="sm" className="w-full">
-                      Let's Talk
+                    <Button size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                      {"Let's Talk"}
                     </Button>
                   </motion.div>
                 </motion.div>

@@ -34,12 +34,12 @@ export function Footer() {
   const isInView = useInView(ref, { once: true, margin: "-5% 0px" })
 
   return (
-    <footer className="border-t border-white/5 bg-white/[0.02] relative">
+    <footer className="border-t border-border bg-card">
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6 }}
           className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12"
         >
           {/* Logo and description */}
@@ -51,7 +51,7 @@ export function Footer() {
               <span className="text-xl font-bold text-foreground">Quanti</span>
             </Link>
             <p className="text-sm text-muted-foreground mb-6 max-w-xs">
-              AI-powered performance marketing for financial services.
+              Performance marketing for financial services, powered by expertise and AI.
             </p>
             <div className="flex items-center gap-4">
               <Link
@@ -145,7 +145,7 @@ export function Footer() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 pt-8 border-t border-white/5"
+          className="mt-12 pt-8 border-t border-border"
         >
           <p className="text-sm text-muted-foreground text-center">
             &copy; {new Date().getFullYear()} iQuanti. All rights reserved.

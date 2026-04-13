@@ -9,25 +9,25 @@ const services = [
     icon: TrendingUp,
     title: "Performance Marketing",
     description:
-      "Full-funnel strategy across owned and paid channels, with predictive AI models optimizing every touchpoint for maximum ROI.",
+      "Full-funnel strategy across paid and organic channels, optimized for measurable acquisition growth and ROI.",
   },
   {
     icon: BarChart3,
     title: "Marketing Analytics",
     description:
-      "Advanced measurement frameworks and modeling capabilities that translate data into clear, actionable insights and business impact.",
+      "Advanced measurement frameworks that translate complex data into clear insights and actionable business decisions.",
   },
   {
     icon: Palette,
     title: "Creative & Experience",
     description:
-      "AI-enabled content and design that engages, converts, and scales across formats like video, graphics, social, and more.",
+      "Compelling content and digital experiences that engage your audience and drive conversions at scale.",
   },
   {
     icon: Settings2,
     title: "Marketing Technology",
     description:
-      "Expert optimization and activation across MarTech ecosystems to enhance performance, personalization, and operational efficiency.",
+      "Expert implementation and optimization of MarTech ecosystems to enhance performance and operational efficiency.",
   },
 ]
 
@@ -35,18 +35,18 @@ const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.1,
     },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       ease: [0.25, 0.1, 0.25, 1],
     },
   },
@@ -57,34 +57,21 @@ export function Services() {
   const isInView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" })
 
   return (
-    <section id="solutions" className="py-24 lg:py-32 relative">
+    <section id="solutions" className="py-24 lg:py-32 bg-secondary/30">
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
-
-        {/* Scroll-triggered line */}
-        <div className="relative h-px mb-16 overflow-hidden">
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={isInView ? { scaleX: 1 } : {}}
-            transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ originX: 0 }}
-            className="absolute inset-0 bg-gradient-to-r from-primary/60 via-primary/20 to-transparent"
-          />
-        </div>
-
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.5 }}
           className="max-w-2xl mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            AI-Powered Digital Marketing Solutions
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+            What We Do
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground leading-relaxed">
             Our integrated approach spans performance marketing, creative, analytics,
-            and technology built to unleash growth, optimize ROI, and meet the demands
-            of today&apos;s digital-first customer.
+            and technology — built to drive growth for financial services brands.
           </p>
         </motion.div>
 
@@ -101,10 +88,10 @@ export function Services() {
               <motion.div
                 key={service.title}
                 variants={itemVariants}
-                className="group p-8 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm hover:border-primary/50 hover:bg-white/[0.05] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                className="group p-8 rounded-xl border border-border bg-card hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                  <div className="p-3 rounded-lg bg-secondary text-primary">
                     <Icon className="h-6 w-6" />
                   </div>
                   <div>

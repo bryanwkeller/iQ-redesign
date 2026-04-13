@@ -13,7 +13,7 @@ const stats = [
   {
     value: 152,
     suffix: "%",
-    label: "Form-fill uplift via AI-led LEAP optimization framework",
+    label: "Form-fill uplift via AI-led optimization",
   },
   {
     value: 30,
@@ -39,26 +39,25 @@ function AnimatedStat({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60, scale: 0.9 }}
-      animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{
-        duration: 0.7,
+        duration: 0.6,
         delay: index * 0.15,
         ease: [0.25, 0.1, 0.25, 1],
       }}
-      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-      className="text-center p-8 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm hover:border-primary/30 hover:bg-white/[0.05] hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+      className="text-center"
     >
       <motion.div
-        initial={{ scale: 0.5 }}
+        initial={{ scale: 0.8 }}
         animate={isVisible ? { scale: 1 } : {}}
         transition={{
           duration: 0.5,
-          delay: index * 0.15 + 0.3,
+          delay: index * 0.15 + 0.2,
           type: "spring",
           stiffness: 200,
         }}
-        className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary mb-4"
+        className="text-5xl md:text-6xl lg:text-7xl font-serif text-primary mb-4"
       >
         {count}
         {suffix}
@@ -75,25 +74,25 @@ export function Results() {
   const isInView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" })
 
   return (
-    <section id="results" className="py-24 lg:py-32 relative">
+    <section id="results" className="py-24 lg:py-32">
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.5 }}
           className="max-w-2xl mx-auto text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Our Results — Data Speaks Louder Than Words
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+            Results That Speak for Themselves
           </h2>
           <p className="text-lg text-muted-foreground">
-            Real outcomes from real engagements with leading financial institutions.
+            Real outcomes from engagements with leading financial institutions.
           </p>
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {stats.map((stat, index) => (
             <AnimatedStat
               key={stat.label}

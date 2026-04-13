@@ -1,14 +1,23 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
+import { Instrument_Serif } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: '--font-inter',
+})
+
+const instrumentSerif = Instrument_Serif({ 
+  subsets: ["latin"],
+  weight: "400",
+  variable: '--font-instrument-serif',
+})
 
 export const metadata: Metadata = {
-  title: 'iQuanti | AI-Powered Performance Marketing for Financial Services',
-  description: 'iQuanti combines deep financial services expertise with proprietary AI platforms to drive measurable growth for Fortune 500 banks, credit card companies, insurance providers, and fintechs.',
+  title: 'iQuanti | Performance Marketing for Financial Services',
+  description: 'iQuanti combines deep financial services expertise with proprietary AI to drive measurable acquisition growth for Fortune 500 banks, insurers, and fintechs.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -35,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
