@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { Instrument_Serif } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -9,10 +8,9 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-const instrumentSerif = Instrument_Serif({ 
+const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"],
-  weight: "400",
-  variable: '--font-instrument-serif',
+  variable: '--font-space-grotesk',
 })
 
 export const metadata: Metadata = {
@@ -44,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} bg-background`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

@@ -64,7 +64,7 @@ export function CaseStudies() {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mb-16"
         >
-          <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-foreground mb-4 font-medium">
             Client Stories
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -96,7 +96,7 @@ export function CaseStudies() {
               </h3>
 
               {/* Stat */}
-              <div className="text-2xl font-serif text-primary mb-4">
+              <div className="text-2xl font-[family-name:var(--font-display)] text-primary mb-4 font-medium">
                 {study.stat}
               </div>
 

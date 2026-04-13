@@ -57,7 +57,7 @@ function AnimatedStat({
           type: "spring",
           stiffness: 200,
         }}
-        className="text-5xl md:text-6xl lg:text-7xl font-serif text-primary mb-4"
+        className="text-5xl md:text-6xl lg:text-7xl font-[family-name:var(--font-display)] text-primary mb-4 font-medium"
       >
         {count}
         {suffix}
@@ -83,7 +83,7 @@ export function Results() {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mx-auto text-center mb-16"
         >
-          <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-foreground mb-4 font-medium">
             Results That Speak for Themselves
           </h2>
           <p className="text-lg text-muted-foreground">

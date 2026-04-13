@@ -18,7 +18,7 @@ export function ContactCTA() {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mx-auto text-center"
         >
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 font-medium">
             Ready to outperform your category?
           </h2>
           <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
