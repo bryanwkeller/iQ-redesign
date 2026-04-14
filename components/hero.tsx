@@ -1,8 +1,146 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+
+// Animated network of drifting nodes connected by lines
+function NetworkCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    let w = 0
+    let h = 0
+
+    interface Node {
+      x: number
+      y: number
+      vx: number
+      vy: number
+      radius: number
+    }
+
+    const nodes: Node[] = []
+
+    const resize = () => {
+      w = canvas.clientWidth
+      h = canvas.clientHeight
+      canvas.width = w
+      canvas.height = h
+    }
+
+    resize()
+
+    // Spread nodes across the canvas after size is known
+    for (let i = 0; i < 6; i++) {
+      nodes.push({
+        x: w * 0.1 + Math.random() * w * 0.8,
+        y: h * 0.1 + Math.random() * h * 0.8,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: 1.5 + Math.random() * 1.5,
+      })
+    }
+
+    const ro = new ResizeObserver(() => {
+      resize()
+    })
+    ro.observe(canvas)
+
+    const MAX_SPEED = 0.55
+    const MAX_DIST = 420
+    const PAD = 60
+
+    let animId: number
+
+    const tick = () => {
+      ctx.clearRect(0, 0, w, h)
+
+      for (const node of nodes) {
+        // Gentle random walk
+        node.vx += (Math.random() - 0.5) * 0.02
+        node.vy += (Math.random() - 0.5) * 0.02
+
+        // Clamp speed
+        const spd = Math.hypot(node.vx, node.vy)
+        if (spd > MAX_SPEED) {
+          node.vx = (node.vx / spd) * MAX_SPEED
+          node.vy = (node.vy / spd) * MAX_SPEED
+        }
+
+        node.x += node.vx
+        node.y += node.vy
+
+        // Soft boundary repulsion
+        if (node.x < PAD) node.vx += 0.04
+        if (node.x > w - PAD) node.vx -= 0.04
+        if (node.y < PAD) node.vy += 0.04
+        if (node.y > h - PAD) node.vy -= 0.04
+      }
+
+      // Draw connecting lines with distance-based opacity
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i]
+          const b = nodes[j]
+          const dist = Math.hypot(a.x - b.x, a.y - b.y)
+          if (dist < MAX_DIST) {
+            const alpha = ((1 - dist / MAX_DIST) * 0.4).toFixed(3)
+            ctx.beginPath()
+            ctx.moveTo(a.x, a.y)
+            ctx.lineTo(b.x, b.y)
+            ctx.strokeStyle = `oklch(0.68 0.19 50 / ${alpha})`
+            ctx.lineWidth = 1
+            ctx.stroke()
+          }
+        }
+      }
+
+      // Draw nodes
+      for (const node of nodes) {
+        // Soft glow
+        const grd = ctx.createRadialGradient(
+          node.x, node.y, 0,
+          node.x, node.y, node.radius * 3.5
+        )
+        grd.addColorStop(0, "oklch(0.68 0.19 50 / 0.08)")
+        grd.addColorStop(1, "oklch(0.68 0.19 50 / 0)")
+        ctx.beginPath()
+        ctx.arc(node.x, node.y, node.radius * 3.5, 0, Math.PI * 2)
+        ctx.fillStyle = grd
+        ctx.fill()
+
+        // Core dot
+        ctx.beginPath()
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2)
+        ctx.fillStyle = "oklch(0.68 0.19 50 / 0.35)"
+        ctx.fill()
+      }
+
+      animId = requestAnimationFrame(tick)
+    }
+
+    animId = requestAnimationFrame(tick)
+
+    return () => {
+      cancelAnimationFrame(animId)
+      ro.disconnect()
+    }
+  }, [])
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+    />
+  )
+}
 
 // Animated grid lines component
 function AnimatedGrid() {
@@ -34,69 +172,31 @@ function AnimatedGrid() {
   )
 }
 
-// Floating data nodes
-function DataNodes() {
-  const nodes = [
-    { x: "15%", y: "25%", delay: 0, size: 8 },
-    { x: "85%", y: "20%", delay: 0.3, size: 6 },
-    { x: "75%", y: "70%", delay: 0.6, size: 10 },
-    { x: "25%", y: "75%", delay: 0.9, size: 7 },
-    { x: "60%", y: "40%", delay: 1.2, size: 5 },
-  ]
+const stats = [
+  { value: 18, prefix: "", suffix: "+", label: "Years in FinServ" },
+  { value: 50, prefix: "", suffix: "+", label: "Fortune 500 Clients" },
+  { value: 2,  prefix: "$", suffix: "B+", label: "Revenue Driven" },
+]
 
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {nodes.map((node, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full bg-primary/60"
-          style={{ 
-            left: node.x, 
-            top: node.y, 
-            width: node.size, 
-            height: node.size 
-          }}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ 
-            scale: [0, 1.2, 1], 
-            opacity: [0, 1, 0.8],
-          }}
-          transition={{ 
-            duration: 0.8, 
-            delay: node.delay,
-            ease: "easeOut"
-          }}
-        />
-      ))}
-      {/* Animated connection lines */}
-      <svg className="absolute inset-0 w-full h-full">
-        <motion.line
-          x1="15%" y1="25%" x2="60%" y2="40%"
-          stroke="oklch(0.55 0.15 35 / 0.3)"
-          strokeWidth="1"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1.5, delay: 1.5 }}
-        />
-        <motion.line
-          x1="60%" y1="40%" x2="85%" y2="20%"
-          stroke="oklch(0.55 0.15 35 / 0.3)"
-          strokeWidth="1"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1.5, delay: 1.8 }}
-        />
-        <motion.line
-          x1="60%" y1="40%" x2="75%" y2="70%"
-          stroke="oklch(0.55 0.15 35 / 0.3)"
-          strokeWidth="1"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1.5, delay: 2.1 }}
-        />
-      </svg>
-    </div>
-  )
+function CountUp({ to, prefix = "", suffix = "" }: { to: number; prefix?: string; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const isInView = useInView(ref, { once: true })
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!isInView) return
+    const duration = 1400
+    const startTime = performance.now()
+    const tick = (t: number) => {
+      const progress = Math.min((t - startTime) / duration, 1)
+      setCount(Math.round((1 - Math.pow(1 - progress, 3)) * to))
+      if (progress < 1) requestAnimationFrame(tick)
+    }
+    const id = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(id)
+  }, [isInView, to])
+
+  return <span ref={ref}>{prefix}{count}{suffix}</span>
 }
 
 export function Hero() {
@@ -104,14 +204,24 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Animated background elements */}
       <AnimatedGrid />
-      <DataNodes />
+      <NetworkCanvas />
       
       {/* Gradient orb */}
-      <motion.div 
+      <motion.div
         className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-transparent blur-3xl"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2, ease: "easeOut" }}
+        initial={{ opacity: 0, scale: 0.8, x: 0, y: 0 }}
+        animate={{
+          opacity: 1,
+          scale: [1, 1.08, 0.97, 1.04, 1],
+          x: [0, 30, -20, 15, 0],
+          y: [0, -25, 20, -10, 0],
+        }}
+        transition={{
+          opacity: { duration: 2, ease: "easeOut" },
+          scale: { duration: 18, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" },
+          x: { duration: 18, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" },
+          y: { duration: 18, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" },
+        }}
       />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16 lg:py-24 w-full relative z-10">
@@ -158,10 +268,12 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="flex flex-wrap items-center gap-6"
           >
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 group h-12 px-8">
-              {"Let's Talk"}
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <a href="#contact">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 group h-12 px-8">
+                {"Let's Talk"}
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </a>
             <a 
               href="#results" 
               className="text-foreground font-medium hover:text-primary transition-colors inline-flex items-center gap-2"
@@ -171,27 +283,33 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Stats row */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="mt-16 pt-10 border-t border-border/50 grid grid-cols-3 gap-8 max-w-xl"
-          >
-            <div>
-              <div className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-medium text-foreground">18+</div>
-              <div className="text-sm text-muted-foreground mt-1">Years in FinServ</div>
-            </div>
-            <div>
-              <div className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-medium text-foreground">50+</div>
-              <div className="text-sm text-muted-foreground mt-1">Fortune 500 Clients</div>
-            </div>
-            <div>
-              <div className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-medium text-foreground">$2B+</div>
-              <div className="text-sm text-muted-foreground mt-1">Revenue Driven</div>
-            </div>
-          </motion.div>
         </div>
+
+        {/* Stats bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="mt-16 rounded-2xl border border-border/60 bg-background/70 backdrop-blur-sm overflow-hidden shadow-[0_8px_32px_oklch(0.68_0.19_50/0.14),0_2px_8px_rgba(0,0,0,0.06)]"
+        >
+          <div className="grid grid-cols-3 divide-x divide-border/60">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                className="flex flex-col items-center py-10 px-8 text-center cursor-default"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
+                whileHover={{ y: -2, transition: { duration: 0.2 } }}
+              >
+                <div className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-semibold text-primary">
+                  <CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+                </div>
+                <div className="text-sm text-muted-foreground mt-2 tracking-wide">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )

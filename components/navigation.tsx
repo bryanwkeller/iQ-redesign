@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
@@ -79,10 +80,14 @@ export function Navigation() {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">i</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">Quanti</span>
+              <Image
+                src="https://www.iquanti.com/wp-content/uploads/2026/01/Slate-grey-without-tagline.png"
+                alt="iQuanti"
+                width={120}
+                height={40}
+                className="h-8 w-auto object-contain"
+                priority
+              />
             </motion.div>
           </Link>
 
@@ -120,9 +125,11 @@ export function Navigation() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-              {"Let's Talk"}
-            </Button>
+            <a href="#contact" onClick={(e) => scrollToSection(e, "#contact")}>
+              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                {"Let's Talk"}
+              </Button>
+            </a>
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -204,9 +211,11 @@ export function Navigation() {
                     }}
                     className="pt-2 px-4"
                   >
-                    <Button size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                      {"Let's Talk"}
-                    </Button>
+                    <a href="#contact" className="block" onClick={(e) => { scrollToSection(e, "#contact"); setIsMobileMenuOpen(false) }}>
+                      <Button size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                        {"Let's Talk"}
+                      </Button>
+                    </a>
                   </motion.div>
                 </motion.div>
               </div>

@@ -40,12 +40,12 @@ export function TeamGlimpse() {
             </h2>
             
             <p className="text-lg text-background/70 mb-8 leading-relaxed max-w-lg">
-              500+ specialists across performance marketing, data science, and engineering — unified by a single goal: driving measurable growth for financial services brands.
+              400+ specialists across performance marketing, data science, and engineering — unified by a single goal: driving measurable growth for financial services brands.
             </p>
 
             <div className="grid grid-cols-3 gap-8 mb-10">
               <div>
-                <div className="font-[family-name:var(--font-display)] text-3xl font-medium text-primary">500+</div>
+                <div className="font-[family-name:var(--font-display)] text-3xl font-medium text-primary">400+</div>
                 <div className="text-sm text-background/60 mt-1">Team Members</div>
               </div>
               <div>
