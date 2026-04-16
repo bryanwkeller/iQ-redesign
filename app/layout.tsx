@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   title: 'iQuanti | AI-Powered Performance Marketing for Financial Services',
   description: 'iQuanti combines deep financial services expertise with proprietary AI platforms to drive measurable growth for Fortune 500 banks, credit card companies, insurance providers, and fintechs.',
   generator: 'v0.app',
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
   icons: {
     icon: [
       {
