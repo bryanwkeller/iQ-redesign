@@ -138,7 +138,7 @@ export function Services() {
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Our integrated approach spans performance marketing, creative, analytics,
-            and technology — built to drive growth for financial services brands.
+            and technology — built to drive growth for banks, insurers, and fintechs.
           </p>
         </motion.div>
 

@@ -173,7 +173,7 @@ function AnimatedGrid() {
 }
 
 const stats = [
-  { value: 18, prefix: "", suffix: "+", label: "Years in FinServ" },
+  { value: 18, prefix: "", suffix: "+", label: "Years in Finance & Insurance" },
   { value: 50, prefix: "", suffix: "+", label: "Fortune 500 Clients" },
   { value: 2,  prefix: "$", suffix: "B+", label: "Revenue Driven" },
 ]
@@ -246,7 +246,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground leading-[1.05] tracking-tight mb-6 text-balance font-medium"
           >
-            Financial services brands that{" "}
+            The financial brands that{" "}
             <span className="text-primary">outperform</span>{" "}
             work with iQuanti.
           </motion.h1>
@@ -258,7 +258,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 leading-relaxed text-pretty"
           >
-            We combine 18+ years of financial services expertise with proprietary AI platforms to drive measurable acquisition growth for Fortune 500 banks, insurers, and fintechs.
+            We combine 18+ years of expertise across banking, insurance, and fintech with proprietary AI platforms to drive measurable acquisition growth for the world's leading financial brands.
           </motion.p>
 
           {/* CTAs */}

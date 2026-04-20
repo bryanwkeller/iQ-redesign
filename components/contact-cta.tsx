@@ -46,7 +46,7 @@ export function ContactCTA() {
               Ready to outperform your category?
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              {"Let's discuss how iQuanti can drive measurable growth for your financial services brand."}
+              {"Let's discuss how iQuanti can drive measurable growth for your bank, insurer, or fintech."}
             </p>
           </motion.div>
 

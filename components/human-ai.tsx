@@ -27,7 +27,7 @@ const capabilities = [
   {
     icon: Users,
     title: "Expert Teams",
-    subtitle: "Financial Services Specialists",
+    subtitle: "Banking, Insurance & Fintech Specialists",
     description: "18+ years of domain expertise powering every algorithm and strategy we deploy."
   }
 ]
@@ -73,7 +73,7 @@ export function HumanAI() {
 
             <div className="space-y-6 text-background/70 leading-relaxed">
               <p>
-                Every agency claims AI capabilities. Few understand how to deploy them for financial services — where compliance matters, customer journeys are complex, and acquisition costs are high.
+                Every agency claims AI capabilities. Few understand how to deploy them across banking, insurance, and fintech — where regulatory complexity, customer trust, and acquisition costs demand a different approach.
               </p>
               <p>
                 Our proprietary platforms are built by marketers who&apos;ve spent nearly two decades in banking, insurance, and fintech. We don&apos;t just run algorithms — we know which signals matter and why.

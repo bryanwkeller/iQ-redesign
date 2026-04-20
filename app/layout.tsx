@@ -14,8 +14,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'iQuanti | Performance Marketing for Financial Services',
-  description: 'iQuanti combines deep financial services expertise with proprietary AI to drive measurable acquisition growth for Fortune 500 banks, insurers, and fintechs.',
+  title: 'iQuanti | Performance Marketing for Banking, Insurance & Fintech',
+  description: 'iQuanti combines 18+ years of expertise across banking, insurance, and fintech with proprietary AI to drive measurable acquisition growth for the world\'s leading financial brands.',
   generator: 'v0.app',
   robots: {
     index: false,

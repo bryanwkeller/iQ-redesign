@@ -51,7 +51,7 @@ export function Footer() {
               <span className="text-xl font-bold text-foreground">Quanti</span>
             </Link>
             <p className="text-sm text-muted-foreground mb-6 max-w-xs">
-              Performance marketing for financial services, powered by expertise and AI.
+              Performance marketing for banking, insurance, and fintech — powered by expertise and AI.
             </p>
             <div className="flex items-center gap-4">
               <Link
