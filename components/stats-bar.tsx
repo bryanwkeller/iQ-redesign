@@ -1,5 +1,6 @@
 "use client"
 
+import { HoverCard } from "@/components/hover-card"
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const stats = [
@@ -41,17 +42,17 @@ export function StatsBar() {
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat) => (
             <StaggerItem key={stat.label}>
-              <div className="rounded-xl border border-border bg-card p-6 shadow-sm h-full">
-                <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
+              <HoverCard borderAnimation className="p-6 h-full">
+                <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3 transition-colors group-hover:text-primary">
                   {stat.label}
                 </p>
-                <p className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-semibold text-foreground mb-3">
+                <p className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-semibold text-foreground mb-3 transition-transform duration-300 group-hover:scale-105 origin-left">
                   {stat.value}
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {stat.description}
                 </p>
-              </div>
+              </HoverCard>
             </StaggerItem>
           ))}
         </StaggerContainer>

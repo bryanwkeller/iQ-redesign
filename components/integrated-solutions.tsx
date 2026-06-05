@@ -1,6 +1,7 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
+import { HoverCard } from "@/components/hover-card"
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const solutions = [
@@ -61,11 +62,11 @@ export function IntegratedSolutions() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {solutions.map((solution) => (
             <StaggerItem key={solution.title}>
-              <div className="rounded-xl border border-border bg-card p-6 shadow-sm h-full flex flex-col hover:shadow-md transition-shadow">
+              <HoverCard className="p-6 h-full flex flex-col">
                 <p className="text-xs font-medium uppercase tracking-wider text-primary mb-2">
                   {solution.subtitle}
                 </p>
-                <h3 className="font-[family-name:var(--font-display)] text-xl font-medium text-foreground mb-3">
+                <h3 className="font-[family-name:var(--font-display)] text-xl font-medium text-foreground mb-3 transition-colors group-hover:text-primary">
                   {solution.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
@@ -73,12 +74,16 @@ export function IntegratedSolutions() {
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {solution.products.map((product) => (
-                    <Badge key={product} variant="outline" className="text-xs">
+                    <Badge
+                      key={product}
+                      variant="outline"
+                      className="text-xs transition-colors group-hover:border-primary/40 group-hover:bg-primary/5"
+                    >
                       {product}
                     </Badge>
                   ))}
                 </div>
-              </div>
+              </HoverCard>
             </StaggerItem>
           ))}
         </StaggerContainer>

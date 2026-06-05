@@ -1,7 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import { motion } from "framer-motion"
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
+import { HoverCard } from "@/components/hover-card"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
@@ -78,24 +80,24 @@ export function EnterpriseSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.15}>
-          <div className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
+          <HoverCard className="overflow-hidden">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
               <TabsList className="w-full justify-start rounded-none border-b border-border bg-secondary/30 h-auto p-0">
                 <TabsTrigger
                   value="fortune"
-                  className="rounded-none px-6 py-4 data-[state=active]:bg-background data-[state=active]:shadow-none"
+                  className="rounded-none px-6 py-4 transition-colors data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-none hover:text-primary"
                 >
                   Fortune Ranking
                 </TabsTrigger>
                 <TabsTrigger
                   value="size"
-                  className="rounded-none px-6 py-4 data-[state=active]:bg-background data-[state=active]:shadow-none"
+                  className="rounded-none px-6 py-4 transition-colors data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-none hover:text-primary"
                 >
                   Company Size
                 </TabsTrigger>
                 <TabsTrigger
                   value="industry"
-                  className="rounded-none px-6 py-4 data-[state=active]:bg-background data-[state=active]:shadow-none"
+                  className="rounded-none px-6 py-4 transition-colors data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-none hover:text-primary"
                 >
                   Industry
                 </TabsTrigger>
@@ -104,28 +106,41 @@ export function EnterpriseSection() {
               {(["fortune", "size", "industry"] as const).map((tab) => (
                 <TabsContent key={tab} value={tab} className="p-8 lg:p-12 mt-0">
                   <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    <div className="h-[280px]">
+                    <motion.div
+                      className="h-[280px]"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4 }}
+                      key={tab}
+                    >
                       <DonutChart data={datasets[tab]} />
-                    </div>
-                    <div className="space-y-4">
-                      {datasets[tab].map((item) => (
-                        <div key={item.name} className="flex items-center justify-between gap-4">
+                    </motion.div>
+                    <div className="space-y-3">
+                      {datasets[tab].map((item, index) => (
+                        <motion.div
+                          key={item.name}
+                          className="flex items-center justify-between gap-4 rounded-lg px-3 py-2 -mx-3 transition-colors hover:bg-secondary/50"
+                          whileHover={{ x: 4, transition: { duration: 0.2 } }}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.05 }}
+                        >
                           <div className="flex items-center gap-3">
                             <div
-                              className="w-4 h-4 rounded-sm shrink-0"
+                              className="w-4 h-4 rounded-sm shrink-0 transition-transform duration-300 hover:scale-125"
                               style={{ backgroundColor: item.color }}
                             />
                             <span className="text-foreground font-medium">{item.name}</span>
                           </div>
                           <span className="text-muted-foreground font-semibold">{item.value}%</span>
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
                   </div>
                 </TabsContent>
               ))}
             </Tabs>
-          </div>
+          </HoverCard>
         </ScrollReveal>
       </div>
     </section>

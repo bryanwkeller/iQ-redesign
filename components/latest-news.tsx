@@ -2,8 +2,8 @@
 
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { HoverCard } from "@/components/hover-card"
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const articles = [
@@ -43,30 +43,27 @@ export function LatestNews() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {articles.map((article) => (
             <StaggerItem key={article.title}>
-              <Card className="h-full flex flex-col hover:shadow-md transition-shadow">
-                <CardHeader>
-                  <Badge variant="secondary" className="w-fit mb-2">
-                    {article.category}
-                  </Badge>
-                  <CardTitle className="font-[family-name:var(--font-display)] text-xl leading-snug">
-                    {article.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {article.description}
-                  </p>
-                </CardContent>
-                <CardFooter>
-                  <Link
-                    href={article.href}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-                  >
-                    Read more
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </CardFooter>
-              </Card>
+              <HoverCard className="h-full flex flex-col p-6">
+                <Badge
+                  variant="secondary"
+                  className="w-fit mb-4 transition-colors group-hover:bg-primary/10 group-hover:text-primary"
+                >
+                  {article.category}
+                </Badge>
+                <h3 className="font-[family-name:var(--font-display)] text-xl font-medium text-foreground leading-snug mb-3">
+                  {article.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-6">
+                  {article.description}
+                </p>
+                <Link
+                  href={article.href}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors group/link"
+                >
+                  Read more
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                </Link>
+              </HoverCard>
             </StaggerItem>
           ))}
         </StaggerContainer>

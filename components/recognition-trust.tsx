@@ -1,6 +1,7 @@
 "use client"
 
 import { Award, Shield, Trophy, Building2 } from "lucide-react"
+import { HoverCard } from "@/components/hover-card"
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const recognitions = [
@@ -42,8 +43,8 @@ export function RecognitionTrust() {
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {recognitions.map((item) => (
             <StaggerItem key={item.title}>
-              <div className="rounded-xl border border-border bg-card p-6 shadow-sm h-full text-center">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-4">
+              <HoverCard className="p-6 h-full text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-4 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110">
                   <item.icon className="h-7 w-7" />
                 </div>
                 <h3 className="font-[family-name:var(--font-display)] text-lg font-medium text-foreground mb-3">
@@ -52,18 +53,18 @@ export function RecognitionTrust() {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>
-              </div>
+              </HoverCard>
             </StaggerItem>
           ))}
         </StaggerContainer>
 
         <ScrollReveal delay={0.2}>
-          <div className="rounded-xl border border-border bg-secondary/50 p-6 text-center">
+          <HoverCard className="p-6 text-center">
             <p className="text-sm font-semibold text-foreground mb-2">Certifications</p>
             <p className="text-sm text-muted-foreground">
               ISO 27001 · ISO 27701 · SOC 2 Type II · ISO 42001 · HIPAA Compliant
             </p>
-          </div>
+          </HoverCard>
         </ScrollReveal>
       </div>
     </section>
