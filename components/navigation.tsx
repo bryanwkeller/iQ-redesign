@@ -8,11 +8,12 @@ import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const navLinks = [
+  { href: "#about", label: "About Us" },
   { href: "#solutions", label: "Solutions" },
-  { href: "#ai-approach", label: "AI Approach" },
-  { href: "#results", label: "Results" },
+  { href: "#products", label: "Products" },
+  { href: "#our-work", label: "Our Work" },
   { href: "#insights", label: "Insights" },
-  { href: "#contact", label: "Contact" },
+  { href: "#careers", label: "Careers" },
 ]
 
 export function Navigation() {
@@ -127,7 +128,7 @@ export function Navigation() {
           >
             <a href="#contact" onClick={(e) => scrollToSection(e, "#contact")}>
               <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                {"Let's Talk"}
+                Contact Us
               </Button>
             </a>
           </motion.div>
@@ -213,7 +214,7 @@ export function Navigation() {
                   >
                     <a href="#contact" className="block" onClick={(e) => { scrollToSection(e, "#contact"); setIsMobileMenuOpen(false) }}>
                       <Button size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                        {"Let's Talk"}
+                        Contact Us
                       </Button>
                     </a>
                   </motion.div>

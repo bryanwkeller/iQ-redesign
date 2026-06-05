@@ -1,11 +1,12 @@
 import { Navigation } from "@/components/navigation"
 import { Hero } from "@/components/hero"
-import { HumanAI } from "@/components/human-ai"
-import { TrustBar } from "@/components/trust-bar"
-import { Services } from "@/components/services"
-import { Results } from "@/components/results"
-import { CaseStudies } from "@/components/case-studies"
-import { ContactCTA } from "@/components/contact-cta"
+import { StatsBar } from "@/components/stats-bar"
+import { EnterpriseSection } from "@/components/enterprise-section"
+import { LatestNews } from "@/components/latest-news"
+import { IntegratedSolutions } from "@/components/integrated-solutions"
+import { AiNative } from "@/components/ai-native"
+import { RecognitionTrust } from "@/components/recognition-trust"
+import { ContactForm } from "@/components/contact-form"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -14,12 +15,13 @@ export default function Home() {
       <Navigation />
       <main className="relative">
         <Hero />
-        <HumanAI />
-        <Services />
-        <TrustBar />
-        <Results />
-        <CaseStudies />
-        <ContactCTA />
+        <StatsBar />
+        <EnterpriseSection />
+        <LatestNews />
+        <IntegratedSolutions />
+        <AiNative />
+        <RecognitionTrust />
+        <ContactForm />
       </main>
       <Footer />
     </>

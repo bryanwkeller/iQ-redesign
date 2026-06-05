@@ -1,59 +1,75 @@
 "use client"
 
 import Link from "next/link"
-import { Linkedin, Twitter } from "lucide-react"
+import Image from "next/image"
+import { Linkedin, Facebook, Instagram } from "lucide-react"
 import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
-const footerLinks = {
-  solutions: [
-    { label: "Performance Marketing", href: "#" },
-    { label: "Marketing Analytics", href: "#" },
-    { label: "Creative & Experience", href: "#" },
-    { label: "Marketing Technology", href: "#" },
-  ],
-  products: [
-    { label: "ALPS Platform", href: "#" },
-    { label: "LEAP Optimization", href: "#" },
-    { label: "Analytics Suite", href: "#" },
-  ],
-  company: [
-    { label: "Case Studies", href: "#" },
-    { label: "Insights", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "About Us", href: "#" },
-  ],
-  legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-  ],
-}
+const companyLinks = [
+  { label: "About Us", href: "#about" },
+  { label: "Careers", href: "#careers" },
+  { label: "Contact Us", href: "#contact" },
+  { label: "Solutions", href: "#solutions" },
+]
 
 export function Footer() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-5% 0px" })
+  const [email, setEmail] = useState("")
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault()
+    setEmail("")
+  }
 
   return (
     <footer className="border-t border-border bg-card">
+      <div className="bg-primary/5 border-b border-border py-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <p className="font-[family-name:var(--font-display)] text-lg md:text-xl font-medium text-foreground text-center">
+            Empowering Clients. Unleashing Growth
+          </p>
+        </div>
+      </div>
+
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
         >
-          {/* Logo and description */}
-          <div className="col-span-2 md:col-span-4 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-1 mb-4">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">i</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">Quanti</span>
+          <div className="lg:col-span-1">
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <Image
+                src="https://www.iquanti.com/wp-content/uploads/2026/01/Slate-grey-without-tagline.png"
+                alt="iQuanti"
+                width={120}
+                height={40}
+                className="h-8 w-auto object-contain"
+              />
             </Link>
-            <p className="text-sm text-muted-foreground mb-6 max-w-xs">
-              Performance marketing for banking, insurance, and fintech — powered by expertise and AI.
+            <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+              iQuanti is an AI-native growth marketing company built for the age of conversational and agentic transformation that turns consumer signals into enterprise impact.
             </p>
             <div className="flex items-center gap-4">
+              <Link
+                href="#"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </Link>
+              <Link
+                href="#"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </Link>
               <Link
                 href="#"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -61,55 +77,13 @@ export function Footer() {
               >
                 <Linkedin className="h-5 w-5" />
               </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </Link>
             </div>
           </div>
 
-          {/* Solutions */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground mb-4">Solutions</h3>
-            <ul className="space-y-3">
-              {footerLinks.solutions.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Products */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground mb-4">Products</h3>
-            <ul className="space-y-3">
-              {footerLinks.products.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
+          <div id="careers">
             <h3 className="text-sm font-semibold text-foreground mb-4">Company</h3>
             <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
+              {companyLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
@@ -122,25 +96,29 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground mb-4">Legal</h3>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="lg:col-span-2">
+            <h3 className="text-sm font-semibold text-foreground mb-2 uppercase tracking-wide">
+              Stay Connected
+            </h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Subscribe to our newsletter for insights and updates
+            </p>
+            <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md">
+              <Input
+                type="email"
+                placeholder="Enter Email Id"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1"
+                required
+              />
+              <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90 shrink-0">
+                Subscribe
+              </Button>
+            </form>
           </div>
         </motion.div>
 
-        {/* Copyright */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -148,7 +126,11 @@ export function Footer() {
           className="mt-12 pt-8 border-t border-border"
         >
           <p className="text-sm text-muted-foreground text-center">
-            &copy; {new Date().getFullYear()} iQuanti. All rights reserved.
+            <Link href="https://www.iquanti.com/privacy-policy/" className="underline hover:text-foreground">
+              Privacy Policy
+            </Link>
+            {" | "}
+            &copy; Copyright {new Date().getFullYear()} iQuanti, Inc. All Rights Reserved
           </p>
         </motion.div>
       </div>
