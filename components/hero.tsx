@@ -184,18 +184,17 @@ export function Hero() {
       />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16 lg:py-24 w-full relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl text-left">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center justify-center gap-3 mb-8"
+            className="flex items-center gap-3 mb-8"
           >
             <div className="h-px w-12 bg-primary" />
             <span className="text-sm font-medium tracking-wider uppercase text-primary">
               AI-Native Growth Marketing
             </span>
-            <div className="h-px w-12 bg-primary" />
           </motion.div>
 
           <motion.h1
@@ -212,7 +211,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed text-pretty"
+            className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-12 leading-relaxed text-pretty"
           >
             Orchestrating AI, data, and industry expertise to meet your customers in their moment, and convert that signal into a measurable business impact.
           </motion.p>
@@ -221,7 +220,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-wrap items-center justify-center gap-4"
+            className="flex flex-wrap items-center gap-4"
           >
             <a href="#solutions">
               <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 group h-12 px-8">

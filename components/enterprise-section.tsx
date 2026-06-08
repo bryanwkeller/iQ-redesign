@@ -70,7 +70,7 @@ export function EnterpriseSection() {
   return (
     <section className="py-24 lg:py-32 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
+        <ScrollReveal className="text-left max-w-3xl mb-16">
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight mb-6">
             Built for enterprise-grade complexity and scale
           </h2>
