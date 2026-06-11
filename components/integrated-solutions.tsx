@@ -42,7 +42,7 @@ export function IntegratedSolutions() {
         <ScrollReveal className="mb-6">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-primary" />
-            <span className="text-sm font-medium tracking-wider uppercase text-primary">
+            <span className="text-sm font-medium tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
               Integrated Solution, Powered by iQ.AI
             </span>
           </div>
@@ -76,7 +76,7 @@ export function IntegratedSolutions() {
                 </span>
 
                 {/* Content */}
-                <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">
+                <p className="text-xs font-semibold uppercase tracking-widest text-[oklch(0.46_0.01_85)] mb-2">
                   {pillar.subtitle}
                 </p>
                 <h3 className="font-[family-name:var(--font-display)] text-lg font-medium text-foreground mb-3 leading-snug transition-colors duration-300 group-hover:text-primary">

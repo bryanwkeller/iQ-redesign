@@ -33,7 +33,7 @@ export function LatestNews() {
         <ScrollReveal className="mb-12">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-12 bg-primary" />
-            <span className="text-sm font-medium tracking-wider uppercase text-primary">
+            <span className="text-sm font-medium tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
               Latest at iQuanti
             </span>
           </div>

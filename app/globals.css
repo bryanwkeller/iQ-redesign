@@ -4,8 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Warm off-white background */
-  --background: oklch(0.975 0.008 85);
+  /* Warm off-white background — lightened to oklch(0.985) for 3:1 contrast with brand orange */
+  --background: oklch(0.985 0.006 85);
   --foreground: oklch(0.18 0.01 250);
   
   /* Card - slightly warmer white */
