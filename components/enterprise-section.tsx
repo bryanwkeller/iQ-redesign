@@ -80,29 +80,28 @@ export function EnterpriseSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.15}>
-          <HoverCard className="overflow-hidden">
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="w-full justify-start rounded-none border-b border-border bg-secondary/30 h-auto p-0">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            {/* Pill segment tabs — sits above the card, no orange needed */}
+            <TabsList className="inline-flex gap-1 p-1 rounded-full bg-secondary border border-border h-auto mb-4">
+              {[
+                { value: "fortune", label: "Fortune Ranking" },
+                { value: "size",    label: "Company Size" },
+                { value: "industry",label: "Industry" },
+              ].map(({ value, label }) => (
                 <TabsTrigger
-                  value="fortune"
-                  className="rounded-none px-6 py-4 transition-colors data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-none hover:text-primary"
+                  key={value}
+                  value={value}
+                  className="rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer
+                             text-muted-foreground hover:text-foreground
+                             data-[state=active]:bg-foreground data-[state=active]:text-background
+                             data-[state=active]:shadow-sm data-[state=active]:font-semibold"
                 >
-                  Fortune Ranking
+                  {label}
                 </TabsTrigger>
-                <TabsTrigger
-                  value="size"
-                  className="rounded-none px-6 py-4 transition-colors data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-none hover:text-primary"
-                >
-                  Company Size
-                </TabsTrigger>
-                <TabsTrigger
-                  value="industry"
-                  className="rounded-none px-6 py-4 transition-colors data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-none hover:text-primary"
-                >
-                  Industry
-                </TabsTrigger>
-              </TabsList>
+              ))}
+            </TabsList>
 
+            <HoverCard>
               {(["fortune", "size", "industry"] as const).map((tab) => (
                 <TabsContent key={tab} value={tab} className="p-8 lg:p-12 mt-0">
                   <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -139,8 +138,8 @@ export function EnterpriseSection() {
                   </div>
                 </TabsContent>
               ))}
-            </Tabs>
-          </HoverCard>
+            </HoverCard>
+          </Tabs>
         </ScrollReveal>
       </div>
     </section>
