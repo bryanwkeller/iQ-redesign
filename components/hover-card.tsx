@@ -63,8 +63,8 @@ export function HoverCard({ children, className, borderAnimation = false, dark =
             stroke="oklch(0.68 0.19 50)"
             strokeWidth="2"
             strokeLinecap="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: hovered ? 1 : 0 }}
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: hovered ? 1 : 0, opacity: hovered ? 1 : 0 }}
             transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
           />
         </svg>
