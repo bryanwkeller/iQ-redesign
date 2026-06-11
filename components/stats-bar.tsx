@@ -5,24 +5,24 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll
 
 const stats = [
   {
-    label: "Credit Card",
-    value: "7/10",
-    description: "of the leading US credit card issuers empowered to grow",
+    label: "Fortune 500",
+    value: "45%",
+    description: "of our client base are Fortune 500 enterprises",
   },
   {
-    label: "Banking",
+    label: "Banking & Finance",
     value: "7/10",
-    description: "of the largest US banks partner with us for growth marketing",
+    description: "of the largest US banks partner with us for growth",
   },
   {
-    label: "6 Markets",
+    label: "Global Reach",
     value: "6",
-    description: "Trusted by leading US insurance providers",
+    description: "markets served across North America, EMEA & APAC",
   },
   {
-    label: "18+ years",
+    label: "Proven Track Record",
     value: "18+",
-    description: "Dedicated BFSI practice",
+    description: "years building enterprise growth programs",
   },
 ]
 
@@ -31,11 +31,17 @@ export function StatsBar() {
     <section id="about" className="py-24 lg:py-32 bg-[oklch(0.15_0.03_260)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal className="max-w-2xl mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-px w-12 bg-primary" />
+            <span className="text-sm font-medium tracking-wider uppercase text-primary">
+              Trusted at scale
+            </span>
+          </div>
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-medium leading-tight mb-6">
-            The agency that financial services trusts above all others
+            The agency that enterprises trust
           </h2>
           <p className="text-lg text-white/60 leading-relaxed">
-            Orchestrating AI, data, and industry expertise to meet your customers in their moment, and convert that signal into a measurable business impact.
+            From Fortune 500 leaders to category-defining challengers, the most demanding organizations partner with iQuanti to turn signal into measurable growth.
           </p>
         </ScrollReveal>
 

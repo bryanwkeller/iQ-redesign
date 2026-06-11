@@ -13,39 +13,33 @@ import { ScrollReveal } from "@/components/scroll-reveal"
 const products = [
   {
     name: "SIERA",
-    category: "Experience & CRO",
-    description:
-      "AI-powered multi surface search intelligence, expanding beyond traditional SEO to integrate, optimize, and orchestrate the full owned media ecosystem including GEO and LLM visibility.",
+    category: "Search Intelligence",
+    description: "Multi-surface search intelligence — SEO, GEO & LLM visibility in one engine.",
   },
   {
     name: "LEAP",
-    category: "SEO Intelligence",
-    description:
-      "End-to-end AI-driven system spanning UX scoring → competitive benchmarking → recommendations → test ideation → prioritization → prototyping. BFSI intelligence layer built-in.",
+    category: "Experience & CRO",
+    description: "UX scoring to prototyping, end to end — with BFSI intelligence built in.",
   },
   {
     name: "ALPS",
-    category: "Creative Intelligence",
-    description:
-      "Predictive SEO intelligence and gap scoring. Identifies and prioritizes growth opportunities before competitors act purpose-built for financial services search complexity.",
+    category: "SEO Intelligence",
+    description: "Predictive SEO gap scoring that surfaces growth opportunities first.",
   },
   {
     name: "CreativeiQ",
-    category: "Agentic AI",
-    description:
-      "AI-powered system that audits creatives, enhanced by a BFSI intelligence layer for industry-specific insights accelerating ad production and quality at scale.",
+    category: "Creative Intelligence",
+    description: "AI creative auditing that accelerates ad production at scale.",
   },
   {
     name: "Agentic Suite",
-    category: "Paid Media",
-    description:
-      "Agentic AI embedded across iQuanti's full solution suite from automated content review and intelligent keyword classification to cross-channel performance orchestration.",
+    category: "Agentic AI",
+    description: "Agentic AI embedded across the full iQuanti solution stack.",
   },
   {
     name: "Omnichannel Paid Hub",
     category: "Paid Media",
-    description:
-      "AI-led planning, activation, measurement, and optimization with outcome-driven execution at its core maximizing ROI across Google, Meta, and programmatic.",
+    description: "AI-led paid planning, activation & optimization across every channel.",
   },
 ]
 

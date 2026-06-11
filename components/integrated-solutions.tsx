@@ -1,37 +1,45 @@
 "use client"
 
+import { Search, Megaphone, Route, Building2, Cpu } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { motion } from "framer-motion"
+import { HoverCard } from "@/components/hover-card"
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const pillars = [
   {
-    num: "01",
+    icon: Search,
     subtitle: "Presence",
     title: "Integrated Search",
     description: "Unified brand visibility across SEO, AIO, and GEO — orchestrated for every product journey.",
     products: ["SIERA", "ALPS"],
   },
   {
-    num: "02",
+    icon: Megaphone,
     subtitle: "Amplify",
     title: "Integrated Media",
-    description: "Paid, owned, and earned media working in one connected performance loop.",
+    description: "Paid, owned, and earned media working together in one connected performance loop.",
     products: ["Omnichannel Paid Hub"],
   },
   {
-    num: "03",
+    icon: Route,
     subtitle: "Journey",
     title: "Integrated Experience",
     description: "End-to-end CX optimization powered by AI across enterprise martech platforms.",
     products: ["Adobe AEP", "Braze", "LEAP"],
   },
   {
-    num: "04",
+    icon: Building2,
     subtitle: "Enterprise",
     title: "Integrated B2B",
     description: "ABX performance: GEO sentiment powering agentic account intelligence at scale.",
     products: ["iQ.AI", "SIERA", "6SENSE"],
+  },
+  {
+    icon: Cpu,
+    subtitle: "Core",
+    title: "Integrated Tech",
+    description: "iQ.AI orchestration embedded across Adobe AEP, SFM/DC, Braze & Uniphore.",
+    products: ["iQ.AI Hub", "Full Stack"],
   },
 ]
 
@@ -39,16 +47,17 @@ export function IntegratedSolutions() {
   return (
     <section id="solutions" className="py-24 lg:py-32 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <ScrollReveal className="mb-6">
-          <div className="flex items-center gap-3 mb-4">
+        <ScrollReveal className="mb-6 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
             <span className="text-sm font-medium tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
               Integrated Solution, Powered by iQ.AI
             </span>
+            <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.1} className="mb-16 max-w-2xl">
+        <ScrollReveal delay={0.1} className="mb-16 max-w-2xl mx-auto text-center">
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight mb-4">
             <span className="text-primary">IQ.Impact</span>
           </h2>
@@ -57,70 +66,47 @@ export function IntegratedSolutions() {
           </p>
         </ScrollReveal>
 
-        {/* 4 Pillars */}
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-border rounded-2xl overflow-hidden">
-          {pillars.map((pillar, i) => (
-            <StaggerItem key={pillar.num}>
-              <motion.div
-                className={`group relative h-full flex flex-col p-7 bg-card cursor-default transition-colors duration-300 hover:bg-primary/[0.04] ${
-                  i < pillars.length - 1 ? "border-b lg:border-b-0 lg:border-r border-border" : ""
-                }`}
-                whileHover={{ transition: { duration: 0.2 } }}
+        {/* 3 / 2 centered grid with iconography */}
+        <StaggerContainer className="flex flex-wrap justify-center gap-6">
+          {pillars.map((pillar) => {
+            const Icon = pillar.icon
+            return (
+              <StaggerItem
+                key={pillar.title}
+                className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
               >
-                {/* Orange top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary/80 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <HoverCard className="p-8 h-full flex flex-col items-center text-center">
+                  {/* Icon medallion */}
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary mb-5 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110">
+                    <Icon className="h-8 w-8" strokeWidth={1.75} aria-hidden="true" />
+                  </div>
 
-                {/* Number */}
-                <span className="font-[family-name:var(--font-display)] text-5xl font-bold text-muted-foreground/20 leading-none mb-6 select-none transition-colors duration-300 group-hover:text-primary/20">
-                  {pillar.num}
-                </span>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-[oklch(0.46_0.01_85)] mb-2">
+                    {pillar.subtitle}
+                  </p>
+                  <h3 className="font-[family-name:var(--font-display)] text-xl font-medium text-foreground mb-3 leading-snug transition-colors duration-300 group-hover:text-primary">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-5">
+                    {pillar.description}
+                  </p>
 
-                {/* Content */}
-                <p className="text-xs font-semibold uppercase tracking-widest text-[oklch(0.46_0.01_85)] mb-2">
-                  {pillar.subtitle}
-                </p>
-                <h3 className="font-[family-name:var(--font-display)] text-lg font-medium text-foreground mb-3 leading-snug transition-colors duration-300 group-hover:text-primary">
-                  {pillar.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-5">
-                  {pillar.description}
-                </p>
-
-                {/* Products */}
-                <div className="flex flex-wrap gap-1.5">
-                  {pillar.products.map((p) => (
-                    <Badge
-                      key={p}
-                      variant="outline"
-                      className="text-xs transition-colors group-hover:border-primary/40 group-hover:bg-primary/5 group-hover:text-primary"
-                    >
-                      {p}
-                    </Badge>
-                  ))}
-                </div>
-              </motion.div>
-            </StaggerItem>
-          ))}
+                  <div className="flex flex-wrap justify-center gap-1.5">
+                    {pillar.products.map((p) => (
+                      <Badge
+                        key={p}
+                        variant="outline"
+                        className="text-xs transition-colors group-hover:border-primary/40 group-hover:bg-primary/5 group-hover:text-primary"
+                      >
+                        {p}
+                      </Badge>
+                    ))}
+                  </div>
+                </HoverCard>
+              </StaggerItem>
+            )
+          })}
         </StaggerContainer>
-
-        {/* Core infrastructure connector */}
-        <ScrollReveal delay={0.3}>
-          <div className="mt-4 px-7 py-4 rounded-xl border border-border bg-secondary/40 flex flex-wrap items-center gap-x-6 gap-y-2">
-            <div className="flex items-center gap-3">
-              <div className="h-px w-8 bg-primary/40" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Core</span>
-            </div>
-            <span className="text-sm font-medium text-foreground">Integrated Tech</span>
-            <span className="text-sm text-muted-foreground">iQ.AI orchestration across Adobe AEP, SFM/DC, Braze & Uniphore</span>
-            <div className="flex flex-wrap gap-1.5 ml-auto">
-              {["iQ.AI Hub", "Full Stack"].map((p) => (
-                <Badge key={p} variant="outline" className="text-xs">
-                  {p}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   )

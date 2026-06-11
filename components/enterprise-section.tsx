@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
 import { HoverCard } from "@/components/hover-card"
 import { ScrollReveal } from "@/components/scroll-reveal"
@@ -28,11 +28,33 @@ const sizeData = [
   { name: "Growth", value: 15, color: "oklch(0.72 0.08 85)" },
 ]
 
-const datasets = {
-  industry: industryData,
-  fortune: fortuneData,
-  size: sizeData,
-}
+const views = {
+  fortune: {
+    label: "Fortune Ranking",
+    title: "Client base by Fortune ranking",
+    caption: "Share of our clients by Fortune classification",
+    centerLabel: "Fortune mix",
+    data: fortuneData,
+  },
+  size: {
+    label: "Company Size",
+    title: "Client base by company size",
+    caption: "Share of our clients by organization size",
+    centerLabel: "Size mix",
+    data: sizeData,
+  },
+  industry: {
+    label: "Industry",
+    title: "Client base by industry",
+    caption: "Share of our clients across sectors",
+    centerLabel: "Industry mix",
+    data: industryData,
+  },
+} as const
+
+type ViewKey = keyof typeof views
+const order: ViewKey[] = ["fortune", "size", "industry"]
+const ROTATE_MS = 5000
 
 function DonutChart({ data }: { data: typeof industryData }) {
   return (
@@ -65,7 +87,23 @@ function DonutChart({ data }: { data: typeof industryData }) {
 }
 
 export function EnterpriseSection() {
-  const [activeTab, setActiveTab] = useState("fortune")
+  const [activeTab, setActiveTab] = useState<ViewKey>("fortune")
+  const [autoRotate, setAutoRotate] = useState(true)
+
+  useEffect(() => {
+    if (!autoRotate) return
+    const id = setInterval(() => {
+      setActiveTab((prev) => order[(order.indexOf(prev) + 1) % order.length])
+    }, ROTATE_MS)
+    return () => clearInterval(id)
+  }, [autoRotate])
+
+  const handleSelect = (value: string) => {
+    setAutoRotate(false)
+    setActiveTab(value as ViewKey)
+  }
+
+  const view = views[activeTab]
 
   return (
     <section className="py-24 lg:py-32 bg-background">
@@ -80,42 +118,79 @@ export function EnterpriseSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.15}>
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            {/* Pill segment tabs — sits above the card, no orange needed */}
-            <TabsList className="inline-flex gap-1 p-1 rounded-full bg-secondary border border-border h-auto mb-4">
-              {[
-                { value: "fortune", label: "Fortune Ranking" },
-                { value: "size",    label: "Company Size" },
-                { value: "industry",label: "Industry" },
-              ].map(({ value, label }) => (
-                <TabsTrigger
-                  key={value}
-                  value={value}
-                  className="rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer
-                             text-muted-foreground hover:text-foreground
-                             data-[state=active]:bg-foreground data-[state=active]:text-background
-                             data-[state=active]:shadow-sm data-[state=active]:font-semibold"
-                >
-                  {label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+          <Tabs value={activeTab} onValueChange={handleSelect} className="w-full">
+            {/* Pill segment tabs with auto-rotate indicator */}
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <TabsList className="inline-flex gap-1 p-1 rounded-full bg-secondary border border-border h-auto">
+                {order.map((value) => (
+                  <TabsTrigger
+                    key={value}
+                    value={value}
+                    className="relative rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer
+                               text-muted-foreground hover:text-foreground
+                               data-[state=active]:bg-foreground data-[state=active]:text-background
+                               data-[state=active]:shadow-sm data-[state=active]:font-semibold"
+                  >
+                    {views[value].label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+              {autoRotate && (
+                <span className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-primary/60 animate-ping" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+                  </span>
+                  Auto-rotating
+                </span>
+              )}
+            </div>
 
+            <div onMouseEnter={() => setAutoRotate(false)}>
             <HoverCard>
-              {(["fortune", "size", "industry"] as const).map((tab) => (
+              {order.map((tab) => (
                 <TabsContent key={tab} value={tab} className="p-8 lg:p-12 mt-0">
+                  {/* Clear identifier of the represented visual */}
+                  <div className="mb-8" aria-live="polite">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
+                      {views[tab].label}
+                    </p>
+                    <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-medium text-foreground">
+                      {views[tab].title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-1">{views[tab].caption}</p>
+                  </div>
+
                   <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    <motion.div
-                      className="h-[280px]"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4 }}
-                      key={tab}
-                    >
-                      <DonutChart data={datasets[tab]} />
-                    </motion.div>
+                    <div className="relative h-[280px]">
+                      <motion.div
+                        className="h-full"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4 }}
+                        key={tab}
+                      >
+                        <DonutChart data={views[tab].data} />
+                      </motion.div>
+                      {/* Center identifier inside donut */}
+                      <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
+                        <AnimatePresence mode="wait">
+                          <motion.span
+                            key={tab}
+                            initial={{ opacity: 0, y: 6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -6 }}
+                            transition={{ duration: 0.3 }}
+                            className="font-[family-name:var(--font-display)] text-base font-medium text-foreground max-w-[120px] leading-tight"
+                          >
+                            {views[tab].centerLabel}
+                          </motion.span>
+                        </AnimatePresence>
+                      </div>
+                    </div>
+
                     <div className="space-y-3">
-                      {datasets[tab].map((item, index) => (
+                      {views[tab].data.map((item, index) => (
                         <motion.div
                           key={item.name}
                           className="flex items-center justify-between gap-4 rounded-lg px-3 py-2 -mx-3 transition-colors hover:bg-secondary/50"
@@ -139,6 +214,7 @@ export function EnterpriseSection() {
                 </TabsContent>
               ))}
             </HoverCard>
+            </div>
           </Tabs>
         </ScrollReveal>
       </div>
