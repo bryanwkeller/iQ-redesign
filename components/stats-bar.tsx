@@ -44,15 +44,22 @@ export function StatsBar() {
             <StaggerItem key={stat.label}>
               <motion.div
                 className="group relative p-6 h-full rounded-xl border border-white/10 bg-white/[0.06] cursor-default"
-                whileHover={{ scale: 1.025, y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
+                initial="rest"
+                whileHover="hover"
+                animate="rest"
+                variants={{
+                  rest: { scale: 1, y: 0 },
+                  hover: { scale: 1.025, y: -4, transition: { duration: 0.2, ease: "easeOut" } },
+                }}
                 style={{ willChange: "transform" }}
               >
-                {/* Animated orange border on hover */}
+                {/* Animated orange border — variants propagate from parent */}
                 <motion.span
                   className="pointer-events-none absolute inset-0 rounded-xl"
-                  style={{ boxShadow: "inset 0 0 0 0px oklch(0.68 0.19 50)" }}
-                  whileHover={{ boxShadow: "inset 0 0 0 1.5px oklch(0.68 0.19 50)" }}
-                  transition={{ duration: 0.2 }}
+                  variants={{
+                    rest: { boxShadow: "inset 0 0 0 0px oklch(0.68 0.19 50)" },
+                    hover: { boxShadow: "inset 0 0 0 1.5px oklch(0.68 0.19 50)", transition: { duration: 0.2 } },
+                  }}
                 />
                 <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
                   {stat.label}
