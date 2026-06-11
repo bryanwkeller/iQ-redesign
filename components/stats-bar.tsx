@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { HoverCard } from "@/components/hover-card"
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const stats = [
@@ -42,25 +42,7 @@ export function StatsBar() {
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat) => (
             <StaggerItem key={stat.label}>
-              <motion.div
-                className="group relative p-6 h-full rounded-xl border border-white/10 bg-white/[0.06] cursor-default"
-                initial="rest"
-                whileHover="hover"
-                animate="rest"
-                variants={{
-                  rest: { scale: 1, y: 0 },
-                  hover: { scale: 1.025, y: -4, transition: { duration: 0.2, ease: "easeOut" } },
-                }}
-                style={{ willChange: "transform" }}
-              >
-                {/* Animated orange border — variants propagate from parent */}
-                <motion.span
-                  className="pointer-events-none absolute inset-0 rounded-xl"
-                  variants={{
-                    rest: { boxShadow: "inset 0 0 0 0px oklch(0.68 0.19 50)" },
-                    hover: { boxShadow: "inset 0 0 0 1.5px oklch(0.68 0.19 50)", transition: { duration: 0.2 } },
-                  }}
-                />
+              <HoverCard borderAnimation dark className="p-6 h-full">
                 <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
                   {stat.label}
                 </p>
@@ -70,7 +52,7 @@ export function StatsBar() {
                 <p className="text-sm text-white/55 leading-relaxed">
                   {stat.description}
                 </p>
-              </motion.div>
+              </HoverCard>
             </StaggerItem>
           ))}
         </StaggerContainer>

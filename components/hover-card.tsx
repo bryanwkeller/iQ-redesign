@@ -9,9 +9,11 @@ interface HoverCardProps {
   className?: string
   /** Animated orange border stroke on hover — use sparingly */
   borderAnimation?: boolean
+  /** Use dark glass styling (white/10 border, white/6 bg) for dark-background sections */
+  dark?: boolean
 }
 
-export function HoverCard({ children, className, borderAnimation = false }: HoverCardProps) {
+export function HoverCard({ children, className, borderAnimation = false, dark = false }: HoverCardProps) {
   const [hovered, setHovered] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
   const [size, setSize] = useState({ w: 0, h: 0 })
@@ -32,8 +34,10 @@ export function HoverCard({ children, className, borderAnimation = false }: Hove
     <motion.div
       ref={cardRef}
       className={cn(
-        "group relative rounded-xl border border-border bg-card cursor-default shadow-sm",
-        "transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/10",
+        "group relative rounded-xl cursor-default",
+        dark
+          ? "border border-white/10 bg-white/[0.06] shadow-none hover:shadow-xl hover:shadow-black/20 transition-shadow duration-300"
+          : "border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/10",
         className
       )}
       whileHover={{
