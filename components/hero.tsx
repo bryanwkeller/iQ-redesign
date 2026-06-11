@@ -232,7 +232,7 @@ export function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                className="h-12 px-8 border-border hover:bg-secondary"
+                className="h-12 px-8 border-border hover:bg-secondary hover:text-foreground"
               >
                 Our Work
               </Button>
