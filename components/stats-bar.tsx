@@ -1,6 +1,6 @@
 "use client"
 
-import { HoverCard } from "@/components/hover-card"
+import { motion } from "framer-motion"
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const stats = [
@@ -28,13 +28,13 @@ const stats = [
 
 export function StatsBar() {
   return (
-    <section id="about" className="py-24 lg:py-32 bg-secondary/30">
+    <section id="about" className="py-24 lg:py-32 bg-[oklch(0.15_0.03_260)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal className="max-w-2xl mb-16">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight mb-6">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-medium leading-tight mb-6">
             The agency that financial services trusts above all others
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-lg text-white/60 leading-relaxed">
             Orchestrating AI, data, and industry expertise to meet your customers in their moment, and convert that signal into a measurable business impact.
           </p>
         </ScrollReveal>
@@ -42,17 +42,28 @@ export function StatsBar() {
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat) => (
             <StaggerItem key={stat.label}>
-              <HoverCard borderAnimation className="p-6 h-full">
-                <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3 transition-colors group-hover:text-primary">
+              <motion.div
+                className="group relative p-6 h-full rounded-xl border border-white/10 bg-white/[0.06] cursor-default"
+                whileHover={{ scale: 1.025, y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
+                style={{ willChange: "transform" }}
+              >
+                {/* Animated orange border on hover */}
+                <motion.span
+                  className="pointer-events-none absolute inset-0 rounded-xl"
+                  style={{ boxShadow: "inset 0 0 0 0px oklch(0.68 0.19 50)" }}
+                  whileHover={{ boxShadow: "inset 0 0 0 1.5px oklch(0.68 0.19 50)" }}
+                  transition={{ duration: 0.2 }}
+                />
+                <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
                   {stat.label}
                 </p>
-                <p className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-semibold text-foreground mb-3 transition-transform duration-300 group-hover:scale-105 origin-left">
+                <p className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-semibold text-white mb-3">
                   {stat.value}
                 </p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-white/55 leading-relaxed">
                   {stat.description}
                 </p>
-              </HoverCard>
+              </motion.div>
             </StaggerItem>
           ))}
         </StaggerContainer>
