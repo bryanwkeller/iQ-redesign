@@ -65,7 +65,7 @@ function DonutChart({ data }: { data: typeof industryData }) {
 }
 
 export function EnterpriseSection() {
-  const [activeTab, setActiveTab] = useState("industry")
+  const [activeTab, setActiveTab] = useState("fortune")
 
   return (
     <section className="py-24 lg:py-32 bg-background">
