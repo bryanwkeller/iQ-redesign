@@ -191,7 +191,7 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-3 mb-8"
           >
-            <div className="h-px w-12 bg-primary" />
+            <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
             <span className="text-sm font-medium tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
               AI-Native Growth Marketing
             </span>

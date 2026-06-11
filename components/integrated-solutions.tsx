@@ -41,7 +41,7 @@ export function IntegratedSolutions() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal className="mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-12 bg-primary" />
+            <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
             <span className="text-sm font-medium tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
               Integrated Solution, Powered by iQ.AI
             </span>
