@@ -45,7 +45,7 @@ const products = [
 
 export function AiNative() {
   return (
-    <section id="products" className="py-24 lg:py-32 bg-background">
+    <section id="products" className="py-16 lg:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           <ScrollReveal>

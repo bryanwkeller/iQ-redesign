@@ -50,7 +50,7 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-secondary/50">
+    <section id="contact" className="py-16 lg:py-24 bg-secondary/50">
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           <motion.div
@@ -59,12 +59,6 @@ export function ContactForm() {
             transition={{ duration: 0.6 }}
             className="lg:pt-4"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
-              <span className="text-sm font-medium tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
-                Get In Touch
-              </span>
-            </div>
             <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 font-medium leading-tight">
               Get In Touch
             </h2>
