@@ -45,20 +45,20 @@ const products = [
 
 export function AiNative() {
   return (
-    <section id="products" className="py-24 lg:py-32 bg-[oklch(0.15_0.03_260)]">
+    <section id="products" className="py-24 lg:py-32 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           <ScrollReveal>
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-px w-12 bg-primary" />
-              <span className="text-sm font-medium tracking-wider uppercase text-primary">
+              <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
+              <span className="text-sm font-medium tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
                 AI-native approach
               </span>
             </div>
-            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-medium leading-tight mb-6">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight mb-6">
               AI runs through everything we do
             </h2>
-            <p className="text-lg text-white/60 leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               Not bolted on as afterthought. Our proprietary platforms and AI-first workflows are embedded across strategy, execution and measurement.
             </p>
           </ScrollReveal>
@@ -72,22 +72,22 @@ export function AiNative() {
                 >
                   <AccordionItem
                     value={product.name}
-                    className="border border-white/10 rounded-xl px-4 bg-white/[0.06] shadow-sm transition-all duration-300 hover:border-primary/40 hover:bg-white/[0.09] data-[state=open]:border-primary/50 data-[state=open]:bg-white/[0.09]"
+                    className="border border-border rounded-xl px-4 bg-card shadow-sm transition-all duration-300 hover:border-primary/40 hover:bg-secondary/50 data-[state=open]:border-primary/50 data-[state=open]:bg-secondary/40"
                   >
-                    <AccordionTrigger className="hover:no-underline py-5 [&[data-state=open]>svg]:text-primary [&>svg]:text-white/40">
+                    <AccordionTrigger className="hover:no-underline py-5 [&[data-state=open]>svg]:text-primary [&>svg]:text-muted-foreground">
                       <div className="flex flex-col items-start gap-2 text-left">
-                        <span className="font-[family-name:var(--font-display)] text-lg font-medium text-white">
+                        <span className="font-[family-name:var(--font-display)] text-lg font-medium text-foreground">
                           {product.name}
                         </span>
                         <Badge
                           variant="secondary"
-                          className="text-xs font-normal bg-white/10 text-white/60 border-0 hover:bg-white/10"
+                          className="text-xs font-normal"
                         >
                           {product.category}
                         </Badge>
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="text-white/55 leading-relaxed pb-5">
+                    <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
                       {product.description}
                     </AccordionContent>
                   </AccordionItem>

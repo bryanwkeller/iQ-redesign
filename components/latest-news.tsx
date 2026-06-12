@@ -25,7 +25,7 @@ const slides: Slide[] = [
     titleBold: "A Revenue Engine With AI",
     cta: "Watch Now",
     href: "#",
-    gradient: "radial-gradient(circle at 88% 120%, oklch(0.60 0.16 50 / 0.30), transparent 55%), linear-gradient(110deg, oklch(0.21 0.035 262) 0%, oklch(0.15 0.03 260) 60%, oklch(0.20 0.04 266) 100%)",
+    gradient: "radial-gradient(circle at 88% 120%, oklch(0.82 0.11 55 / 0.45), transparent 55%), linear-gradient(110deg, oklch(0.97 0.012 80) 0%, oklch(0.945 0.02 72) 60%, oklch(0.96 0.018 76) 100%)",
     speaker: { name: "Vishal Maru", title: "Vice President – Solutions", company: "iQuanti", initials: "VM" },
   },
   {
@@ -34,7 +34,7 @@ const slides: Slide[] = [
     titleBold: "AI Search in Financial Services",
     cta: "Read More",
     href: "#",
-    gradient: "radial-gradient(circle at 80% -15%, oklch(0.60 0.16 50 / 0.26), transparent 52%), linear-gradient(110deg, oklch(0.20 0.03 260) 0%, oklch(0.15 0.03 260) 62%, oklch(0.19 0.035 264) 100%)",
+    gradient: "radial-gradient(circle at 80% -15%, oklch(0.82 0.11 55 / 0.40), transparent 52%), linear-gradient(110deg, oklch(0.965 0.012 78) 0%, oklch(0.945 0.018 70) 62%, oklch(0.955 0.016 74) 100%)",
   },
   {
     category: "Case Study",
@@ -42,7 +42,7 @@ const slides: Slide[] = [
     titleBold: "152% Form-Fill Uplift",
     cta: "Read More",
     href: "#",
-    gradient: "radial-gradient(circle at 100% 50%, oklch(0.60 0.16 50 / 0.24), transparent 50%), linear-gradient(110deg, oklch(0.21 0.03 258) 0%, oklch(0.15 0.03 260) 60%, oklch(0.20 0.035 264) 100%)",
+    gradient: "radial-gradient(circle at 100% 50%, oklch(0.82 0.11 55 / 0.38), transparent 50%), linear-gradient(110deg, oklch(0.97 0.012 80) 0%, oklch(0.945 0.02 72) 60%, oklch(0.955 0.016 76) 100%)",
   },
   {
     category: "Report",
@@ -50,7 +50,7 @@ const slides: Slide[] = [
     titleBold: "BFSI Performance Marketing Benchmark",
     cta: "Get the Report",
     href: "#",
-    gradient: "radial-gradient(circle at 90% 120%, oklch(0.60 0.16 50 / 0.30), transparent 55%), linear-gradient(110deg, oklch(0.22 0.035 264) 0%, oklch(0.15 0.03 260) 60%, oklch(0.21 0.04 268) 100%)",
+    gradient: "radial-gradient(circle at 90% 120%, oklch(0.82 0.11 55 / 0.45), transparent 55%), linear-gradient(110deg, oklch(0.968 0.014 80) 0%, oklch(0.945 0.022 70) 60%, oklch(0.958 0.018 76) 100%)",
   },
   {
     category: "Guide",
@@ -58,14 +58,14 @@ const slides: Slide[] = [
     titleBold: "Agentic AI",
     cta: "Read More",
     href: "#",
-    gradient: "radial-gradient(circle at 76% -12%, oklch(0.60 0.16 50 / 0.26), transparent 52%), linear-gradient(110deg, oklch(0.20 0.03 261) 0%, oklch(0.15 0.03 260) 62%, oklch(0.19 0.035 265) 100%)",
+    gradient: "radial-gradient(circle at 76% -12%, oklch(0.82 0.11 55 / 0.40), transparent 52%), linear-gradient(110deg, oklch(0.965 0.012 78) 0%, oklch(0.945 0.018 70) 62%, oklch(0.955 0.016 74) 100%)",
   },
 ]
 
 const ROTATE_MS = 5500
 
 const HALFTONE = {
-  backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.22) 1px, transparent 1.4px)",
+  backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1.4px)",
   backgroundSize: "16px 16px",
   WebkitMaskImage: "linear-gradient(to left, black 0%, black 35%, transparent 70%)",
   maskImage: "linear-gradient(to left, black 0%, black 35%, transparent 70%)",
@@ -127,7 +127,7 @@ export function LatestNews() {
 
         {/* Rotating banner */}
         <div
-          className="relative rounded-2xl overflow-hidden shadow-lg shadow-black/10"
+          className="relative rounded-2xl overflow-hidden border border-border shadow-lg shadow-black/5"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -145,7 +145,7 @@ export function LatestNews() {
               <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={HALFTONE} />
 
               {/* iQuanti wordmark */}
-              <span className="absolute top-6 right-6 text-sm font-semibold tracking-wide text-white/90">
+              <span className="absolute top-6 right-6 text-sm font-semibold tracking-wide text-foreground/60">
                 iQuanti
               </span>
 
@@ -153,21 +153,21 @@ export function LatestNews() {
                 {/* Left: pill + title */}
                 <div className="flex-1 min-w-0">
                   {slide.isWebinar ? (
-                    <span className="inline-flex items-center gap-2 mb-5 rounded-full bg-white/15 backdrop-blur-sm pl-1.5 pr-3 py-1.5">
+                    <span className="inline-flex items-center gap-2 mb-5 rounded-full bg-foreground/[0.06] pl-1.5 pr-3 py-1.5">
                       <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary">
                         <Play className="h-3 w-3 text-primary-foreground fill-current" />
                       </span>
-                      <span className="text-xs font-semibold uppercase tracking-widest text-white">
+                      <span className="text-xs font-semibold uppercase tracking-widest text-foreground">
                         {slide.category}
                       </span>
                     </span>
                   ) : (
-                    <span className="inline-flex items-center mb-5 rounded-full bg-white/15 backdrop-blur-sm px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-white">
+                    <span className="inline-flex items-center mb-5 rounded-full bg-foreground/[0.06] px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-foreground">
                       {slide.category}
                     </span>
                   )}
-                  <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl lg:text-4xl text-white leading-tight max-w-2xl">
-                    <span className="font-normal text-white/90">{slide.titleLead}</span>
+                  <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl lg:text-4xl text-foreground leading-tight max-w-2xl">
+                    <span className="font-normal text-muted-foreground">{slide.titleLead}</span>
                     <span className="font-semibold">{slide.titleBold}</span>
                   </h3>
                 </div>
@@ -175,13 +175,13 @@ export function LatestNews() {
                 {/* Right: speaker + CTA */}
                 <div className="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-end gap-5 shrink-0">
                   {slide.speaker && (
-                    <div className="inline-flex items-center gap-3 rounded-full bg-white/10 backdrop-blur-sm pl-1.5 pr-5 py-1.5 border border-white/15">
-                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/20 text-white font-semibold text-sm">
+                    <div className="inline-flex items-center gap-3 rounded-full bg-card/70 backdrop-blur-sm pl-1.5 pr-5 py-1.5 border border-border">
+                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold text-sm">
                         {slide.speaker.initials}
                       </span>
                       <span className="leading-tight">
-                        <span className="block text-sm font-semibold text-white">{slide.speaker.name}</span>
-                        <span className="block text-xs text-white/70">{slide.speaker.title}</span>
+                        <span className="block text-sm font-semibold text-foreground">{slide.speaker.name}</span>
+                        <span className="block text-xs text-muted-foreground">{slide.speaker.title}</span>
                         <span className="block text-xs font-medium text-primary">{slide.speaker.company}</span>
                       </span>
                     </div>
