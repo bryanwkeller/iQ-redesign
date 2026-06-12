@@ -1,9 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+import { motion, AnimatePresence, useInView } from "framer-motion"
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
-import { HoverCard } from "@/components/hover-card"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
@@ -54,7 +53,7 @@ const views = {
 
 type ViewKey = keyof typeof views
 const order: ViewKey[] = ["fortune", "size", "industry"]
-const ROTATE_MS = 5000
+const ROTATE_MS = 20000
 
 function DonutChart({ data }: { data: typeof industryData }) {
   return (
@@ -68,13 +67,19 @@ function DonutChart({ data }: { data: typeof industryData }) {
           outerRadius={110}
           paddingAngle={2}
           dataKey="value"
+          startAngle={90}
+          endAngle={-270}
+          isAnimationActive
+          animationBegin={100}
+          animationDuration={850}
+          animationEasing="ease-out"
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={entry.color} />
           ))}
         </Pie>
         <Tooltip
-          formatter={(value: number) => [`${value}%`, "Share"]}
+          formatter={(value: number, name: string) => [`${value}%`, name]}
           contentStyle={{
             backgroundColor: "var(--card)",
             border: "1px solid var(--border)",
@@ -83,6 +88,17 @@ function DonutChart({ data }: { data: typeof industryData }) {
         />
       </PieChart>
     </ResponsiveContainer>
+  )
+}
+
+/** Mounts the donut only once it scrolls into view so the sweep-in animation is always perceivable. */
+function AnimatedDonut({ data }: { data: typeof industryData }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, amount: 0.4 })
+  return (
+    <div ref={ref} className="h-full">
+      {inView && <DonutChart data={data} />}
+    </div>
   )
 }
 
@@ -146,8 +162,10 @@ export function EnterpriseSection() {
               )}
             </div>
 
-            <div onMouseEnter={() => setAutoRotate(false)}>
-            <HoverCard>
+            <div
+              onMouseEnter={() => setAutoRotate(false)}
+              className="rounded-xl border border-border bg-card shadow-sm"
+            >
               {order.map((tab) => (
                 <TabsContent key={tab} value={tab} className="p-8 lg:p-12 mt-0">
                   {/* Clear identifier of the represented visual */}
@@ -163,15 +181,7 @@ export function EnterpriseSection() {
 
                   <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div className="relative h-[280px]">
-                      <motion.div
-                        className="h-full"
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.4 }}
-                        key={tab}
-                      >
-                        <DonutChart data={views[tab].data} />
-                      </motion.div>
+                      <AnimatedDonut key={tab} data={views[tab].data} />
                       {/* Center identifier inside donut */}
                       <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
                         <AnimatePresence mode="wait">
@@ -213,7 +223,6 @@ export function EnterpriseSection() {
                   </div>
                 </TabsContent>
               ))}
-            </HoverCard>
             </div>
           </Tabs>
         </ScrollReveal>

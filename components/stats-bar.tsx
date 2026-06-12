@@ -1,28 +1,34 @@
 "use client"
 
 import { HoverCard } from "@/components/hover-card"
-import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
+import { StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const stats = [
   {
-    label: "Fortune 500",
-    value: "45%",
-    description: "of our client base are Fortune 500 enterprises",
+    eyebrow: "Credit Card",
+    headline: "7/10",
+    description: "of the leading US credit card issuers empowered to grow",
   },
   {
-    label: "Banking & Finance",
-    value: "7/10",
-    description: "of the largest US banks partner with us for growth",
+    eyebrow: "Banking",
+    headline: "7/10",
+    description: "of the largest US banks partner with us for growth marketing",
   },
   {
-    label: "Global Reach",
-    value: "6",
-    description: "markets served across North America, EMEA & APAC",
+    headline: "6 Markets",
+    description: "Trusted by leading US insurance providers",
   },
   {
-    label: "Proven Track Record",
-    value: "18+",
-    description: "years building enterprise growth programs",
+    headline: "P&C · Auto · Dental",
+    description: "Trusted by leading US insurance providers",
+  },
+  {
+    headline: "BFSI CoE",
+    description: "In-house Center of excellence",
+  },
+  {
+    headline: "18+ Years",
+    description: "Dedicated BFSI practice",
   },
 ]
 
@@ -30,30 +36,27 @@ export function StatsBar() {
   return (
     <section id="about" className="py-24 lg:py-32 bg-[oklch(0.15_0.03_260)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <ScrollReveal className="max-w-2xl mb-16">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-primary" />
-            <span className="text-sm font-medium tracking-wider uppercase text-primary">
-              Trusted at scale
-            </span>
-          </div>
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-medium leading-tight mb-6">
-            The agency that enterprises trust
-          </h2>
-          <p className="text-lg text-white/60 leading-relaxed">
-            From Fortune 500 leaders to category-defining challengers, the most demanding organizations partner with iQuanti to turn signal into measurable growth.
-          </p>
-        </ScrollReveal>
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Heading block fills the offset gap (cols 1–2, row 1) */}
+          <StaggerItem className="sm:col-span-2 flex flex-col justify-center pr-0 lg:pr-6 mb-4 sm:mb-0">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-medium leading-tight mb-5">
+              The agency that enterprises trust
+            </h2>
+            <p className="text-lg text-white/60 leading-relaxed">
+              Orchestrating AI, data, and industry expertise to meet your customers in their moment, and convert that signal into a measurable business impact.
+            </p>
+          </StaggerItem>
 
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat) => (
-            <StaggerItem key={stat.label}>
+            <StaggerItem key={stat.headline + stat.description}>
               <HoverCard borderAnimation dark className="p-6 h-full">
-                <p className="text-sm font-medium text-primary uppercase tracking-wide mb-3">
-                  {stat.label}
-                </p>
-                <p className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-semibold text-white mb-3">
-                  {stat.value}
+                {stat.eyebrow && (
+                  <p className="text-sm font-medium text-primary uppercase tracking-wide mb-2">
+                    {stat.eyebrow}
+                  </p>
+                )}
+                <p className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-semibold text-white mb-3 leading-tight">
+                  {stat.headline}
                 </p>
                 <p className="text-sm text-white/55 leading-relaxed">
                   {stat.description}

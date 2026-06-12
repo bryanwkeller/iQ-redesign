@@ -1,11 +1,22 @@
 "use client"
 
-import { Search, Megaphone, Route, Building2, Cpu } from "lucide-react"
+import { useState, type CSSProperties } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Search, Megaphone, Route, Cpu, Building2, type LucideIcon } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { HoverCard } from "@/components/hover-card"
-import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
+import { ScrollReveal } from "@/components/scroll-reveal"
 
-const pillars = [
+type Pillar = {
+  icon: LucideIcon
+  subtitle: string
+  title: string
+  description: string
+  products: string[]
+}
+
+// Order maps to the honeycomb: [0,1] sit on top, [2,3,4] form the base row
+// (index 3 — Integrated Tech — anchors the center as the foundation).
+const pillars: Pillar[] = [
   {
     icon: Search,
     subtitle: "Presence",
@@ -28,22 +39,77 @@ const pillars = [
     products: ["Adobe AEP", "Braze", "LEAP"],
   },
   {
-    icon: Building2,
-    subtitle: "Enterprise",
-    title: "Integrated B2B",
-    description: "ABX performance: GEO sentiment powering agentic account intelligence at scale.",
-    products: ["iQ.AI", "SIERA", "6SENSE"],
-  },
-  {
     icon: Cpu,
     subtitle: "Core",
     title: "Integrated Tech",
     description: "iQ.AI orchestration embedded across Adobe AEP, SFM/DC, Braze & Uniphore.",
     products: ["iQ.AI Hub", "Full Stack"],
   },
+  {
+    icon: Building2,
+    subtitle: "Enterprise",
+    title: "Integrated B2B",
+    description: "ABX performance: GEO sentiment powering agentic account intelligence at scale.",
+    products: ["iQ.AI", "SIERA", "6SENSE"],
+  },
 ]
 
+const HEX_CLIP = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)"
+const GLOW =
+  "drop-shadow(0 0 6px rgba(242, 107, 31, 0.18)) drop-shadow(0 0 14px rgba(242, 107, 31, 0.1))"
+const NO_GLOW =
+  "drop-shadow(0 0 0 rgba(242, 107, 31, 0)) drop-shadow(0 0 0 rgba(242, 107, 31, 0))"
+
+function Hex({
+  pillar,
+  popped,
+  onFocus,
+}: {
+  pillar: Pillar
+  popped: boolean
+  onFocus: () => void
+}) {
+  const Icon = pillar.icon
+  return (
+    // Glow lives on a non-clipped wrapper so the drop-shadow follows the hex
+    // shape instead of being clipped by the hexagon's own clip-path.
+    <motion.div
+      style={{ zIndex: popped ? 10 : 1, filter: popped ? GLOW : NO_GLOW, transition: "filter 300ms ease" }}
+      animate={{ scale: popped ? 1.06 : 1 }}
+      transition={{ type: "spring", stiffness: 300, damping: 22 }}
+      className="relative"
+    >
+      <button
+        type="button"
+        onMouseEnter={onFocus}
+        onFocus={onFocus}
+        aria-pressed={popped}
+        style={{ width: "var(--hex-w)", aspectRatio: "0.866", clipPath: HEX_CLIP }}
+        className="flex flex-col items-center justify-center text-center px-4 cursor-pointer outline-none bg-secondary"
+      >
+        <Icon className="h-8 w-8 sm:h-9 sm:w-9 mb-2 text-primary" strokeWidth={1.75} aria-hidden="true" />
+        <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest mb-1 text-muted-foreground">
+          {pillar.subtitle}
+        </span>
+        <span
+          className={`font-[family-name:var(--font-display)] text-sm sm:text-base font-medium leading-tight transition-colors duration-300 ${
+            popped ? "text-primary" : "text-foreground"
+          }`}
+        >
+          {pillar.title}
+        </span>
+      </button>
+    </motion.div>
+  )
+}
+
 export function IntegratedSolutions() {
+  const [active, setActive] = useState(0)
+  const current = pillars[active]
+
+  const top = [0, 1]
+  const bottom = [2, 3, 4]
+
   return (
     <section id="solutions" className="py-24 lg:py-32 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -57,7 +123,7 @@ export function IntegratedSolutions() {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.1} className="mb-16 max-w-2xl mx-auto text-center">
+        <ScrollReveal delay={0.1} className="mb-14 max-w-2xl mx-auto text-center">
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight mb-4">
             <span className="text-primary">IQ.Impact</span>
           </h2>
@@ -66,47 +132,55 @@ export function IntegratedSolutions() {
           </p>
         </ScrollReveal>
 
-        {/* 3 / 2 centered grid with iconography */}
-        <StaggerContainer className="flex flex-wrap justify-center gap-6">
-          {pillars.map((pillar) => {
-            const Icon = pillar.icon
-            return (
-              <StaggerItem
-                key={pillar.title}
-                className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
-              >
-                <HoverCard className="p-8 h-full flex flex-col items-center text-center">
-                  {/* Icon medallion */}
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary mb-5 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110">
-                    <Icon className="h-8 w-8" strokeWidth={1.75} aria-hidden="true" />
-                  </div>
+        {/* Honeycomb cluster of 5 hexagons with breathing room */}
+        <ScrollReveal delay={0.15}>
+          <div
+            className="flex flex-col items-center"
+            style={{ "--hex-w": "clamp(7rem, 21vw, 11rem)" } as CSSProperties}
+          >
+            <div className="flex justify-center" style={{ gap: "calc(var(--hex-w) * 0.16)" }}>
+              {top.map((i) => (
+                <Hex key={pillars[i].title} pillar={pillars[i]} popped={active === i} onFocus={() => setActive(i)} />
+              ))}
+            </div>
+            <div
+              className="flex justify-center"
+              style={{ gap: "calc(var(--hex-w) * 0.16)", marginTop: "calc(var(--hex-w) * -0.1)" }}
+            >
+              {bottom.map((i) => (
+                <Hex key={pillars[i].title} pillar={pillars[i]} popped={active === i} onFocus={() => setActive(i)} />
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
 
-                  <p className="text-xs font-semibold uppercase tracking-widest text-[oklch(0.46_0.01_85)] mb-2">
-                    {pillar.subtitle}
-                  </p>
-                  <h3 className="font-[family-name:var(--font-display)] text-xl font-medium text-foreground mb-3 leading-snug transition-colors duration-300 group-hover:text-primary">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-5">
-                    {pillar.description}
-                  </p>
-
-                  <div className="flex flex-wrap justify-center gap-1.5">
-                    {pillar.products.map((p) => (
-                      <Badge
-                        key={p}
-                        variant="outline"
-                        className="text-xs transition-colors group-hover:border-primary/40 group-hover:bg-primary/5 group-hover:text-primary"
-                      >
-                        {p}
-                      </Badge>
-                    ))}
-                  </div>
-                </HoverCard>
-              </StaggerItem>
-            )
-          })}
-        </StaggerContainer>
+        {/* Detail panel for the focused pillar */}
+        <div className="mt-12 min-h-[150px] max-w-2xl mx-auto text-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+              <p className="text-xs font-semibold uppercase tracking-widest text-[oklch(0.46_0.01_85)] mb-2">
+                {current.subtitle}
+              </p>
+              <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-medium text-foreground mb-3">
+                {current.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-5">{current.description}</p>
+              <div className="flex flex-wrap justify-center gap-1.5">
+                {current.products.map((p) => (
+                  <Badge key={p} variant="outline" className="text-xs border-primary/40 bg-primary/5 text-primary">
+                    {p}
+                  </Badge>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   )
