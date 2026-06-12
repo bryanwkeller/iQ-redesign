@@ -111,7 +111,7 @@ export function IntegratedSolutions() {
   const bottom = [2, 3, 4]
 
   return (
-    <section id="solutions" className="py-24 lg:py-32 bg-background">
+    <section id="solutions" className="py-16 lg:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal className="mb-6 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">

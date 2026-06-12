@@ -34,7 +34,7 @@ const stats = [
 
 export function StatsBar() {
   return (
-    <section id="about" className="py-24 lg:py-32 bg-[oklch(0.15_0.03_260)]">
+    <section id="about" className="py-16 lg:py-24 bg-[oklch(0.15_0.03_260)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Heading block fills the offset gap (cols 1–2, row 1) */}

@@ -29,7 +29,7 @@ const recognitions = [
 
 export function RecognitionTrust() {
   return (
-    <section id="our-work" className="py-24 lg:py-32 bg-background">
+    <section id="our-work" className="py-16 lg:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal className="text-left max-w-2xl mb-16">
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight mb-6">
