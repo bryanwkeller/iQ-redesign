@@ -53,7 +53,7 @@ const views = {
 
 type ViewKey = keyof typeof views
 const order: ViewKey[] = ["fortune", "size", "industry"]
-const ROTATE_MS = 20000
+const ROTATE_MS = 4000
 
 function DonutChart({ data }: { data: typeof industryData }) {
   return (
@@ -162,10 +162,7 @@ export function EnterpriseSection() {
               )}
             </div>
 
-            <div
-              onMouseEnter={() => setAutoRotate(false)}
-              className="rounded-xl border border-border bg-card shadow-sm"
-            >
+            <div className="rounded-xl border border-border bg-card shadow-sm">
               {order.map((tab) => (
                 <TabsContent key={tab} value={tab} className="p-8 lg:p-12 mt-0">
                   {/* Clear identifier of the represented visual */}
@@ -199,24 +196,24 @@ export function EnterpriseSection() {
                       </div>
                     </div>
 
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {views[tab].data.map((item, index) => (
                         <motion.div
                           key={item.name}
-                          className="flex items-center justify-between gap-4 rounded-lg px-3 py-2 -mx-3 transition-colors hover:bg-secondary/50"
+                          className="flex items-center justify-between gap-4 rounded-lg px-3 py-3 -mx-3 transition-colors hover:bg-secondary/50"
                           whileHover={{ x: 4, transition: { duration: 0.2 } }}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.05 }}
                         >
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-3.5">
                             <div
-                              className="w-4 h-4 rounded-sm shrink-0 transition-transform duration-300 hover:scale-125"
+                              className="w-5 h-5 rounded-sm shrink-0 transition-transform duration-300 hover:scale-125"
                               style={{ backgroundColor: item.color }}
                             />
-                            <span className="text-foreground font-medium">{item.name}</span>
+                            <span className="text-lg md:text-xl text-foreground font-medium">{item.name}</span>
                           </div>
-                          <span className="text-muted-foreground font-semibold">{item.value}%</span>
+                          <span className="text-xl md:text-2xl text-foreground font-semibold tabular-nums">{item.value}%</span>
                         </motion.div>
                       ))}
                     </div>
