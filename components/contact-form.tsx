@@ -50,7 +50,7 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-16 lg:py-24 bg-secondary/50">
+    <section id="contact" className="py-16 lg:py-24 bg-[oklch(0.15_0.03_260)]">
       <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           <motion.div
@@ -59,10 +59,10 @@ export function ContactForm() {
             transition={{ duration: 0.6 }}
             className="lg:pt-4"
           >
-            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 font-medium leading-tight">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white mb-6 font-medium leading-tight">
               Get In Touch
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-white/60 leading-relaxed">
               Ready to turn consumer signals into growth? Let&apos;s build your AI-native marketing strategy together.
             </p>
           </motion.div>
