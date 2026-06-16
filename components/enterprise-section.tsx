@@ -53,7 +53,7 @@ const views = {
 
 type ViewKey = keyof typeof views
 const order: ViewKey[] = ["fortune", "size", "industry"]
-const ROTATE_MS = 4000
+const ROTATE_MS = 5000
 
 function DonutChart({ data }: { data: typeof industryData }) {
   return (
@@ -135,7 +135,7 @@ export function EnterpriseSection() {
 
         <ScrollReveal delay={0.15}>
           <Tabs value={activeTab} onValueChange={handleSelect} className="w-full">
-            {/* Pill segment tabs with auto-rotate indicator */}
+            {/* Pill segment tabs */}
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <TabsList className="inline-flex gap-1 p-1 rounded-full bg-secondary border border-border h-auto">
                 {order.map((value) => (
@@ -151,15 +151,6 @@ export function EnterpriseSection() {
                   </TabsTrigger>
                 ))}
               </TabsList>
-              {autoRotate && (
-                <span className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-primary/60 animate-ping" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-                  </span>
-                  Auto-rotating
-                </span>
-              )}
             </div>
 
             <div className="rounded-xl border border-border bg-card shadow-sm">
