@@ -15,8 +15,8 @@ export default function Home() {
       <Navigation />
       <main className="relative">
         <Hero />
-        <StatsBar />
         <EnterpriseSection />
+        <StatsBar />
         <LatestNews />
         <IntegratedSolutions />
         <AiNative />
