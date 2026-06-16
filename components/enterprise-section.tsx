@@ -122,13 +122,13 @@ export function EnterpriseSection() {
   const view = views[activeTab]
 
   return (
-    <section className="py-16 lg:py-24 bg-background">
+    <section className="py-16 lg:py-24 bg-[oklch(0.15_0.03_260)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal className="text-left max-w-3xl mb-16">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight mb-6">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-medium leading-tight mb-6">
             Built for enterprise-grade complexity and scale
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-lg text-white/60 leading-relaxed">
             Our client base is deliberately weighted toward organizations where performance marketing demands the most precision, accountability, and scale.
           </p>
         </ScrollReveal>
@@ -137,14 +137,14 @@ export function EnterpriseSection() {
           <Tabs value={activeTab} onValueChange={handleSelect} className="w-full">
             {/* Pill segment tabs */}
             <div className="flex flex-wrap items-center gap-3 mb-4">
-              <TabsList className="inline-flex gap-1 p-1 rounded-full bg-secondary border border-border h-auto">
+              <TabsList className="inline-flex gap-1 p-1 rounded-full bg-white/[0.06] border border-white/10 h-auto">
                 {order.map((value) => (
                   <TabsTrigger
                     key={value}
                     value={value}
                     className="relative rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer
-                               text-muted-foreground hover:text-foreground
-                               data-[state=active]:bg-foreground data-[state=active]:text-background
+                               text-white/60 hover:text-white
+                               data-[state=active]:bg-white data-[state=active]:text-foreground
                                data-[state=active]:shadow-sm data-[state=active]:font-semibold"
                   >
                     {views[value].label}
@@ -153,7 +153,7 @@ export function EnterpriseSection() {
               </TabsList>
             </div>
 
-            <div className="rounded-xl border border-border bg-card shadow-sm">
+            <div className="rounded-xl border border-white/10 bg-white/[0.05] shadow-sm">
               {order.map((tab) => (
                 <TabsContent key={tab} value={tab} className="p-8 lg:p-12 mt-0">
                   {/* Clear identifier of the represented visual */}
@@ -161,10 +161,10 @@ export function EnterpriseSection() {
                     <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
                       {views[tab].label}
                     </p>
-                    <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-medium text-foreground">
+                    <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-medium text-white">
                       {views[tab].title}
                     </h3>
-                    <p className="text-sm text-muted-foreground mt-1">{views[tab].caption}</p>
+                    <p className="text-sm text-white/60 mt-1">{views[tab].caption}</p>
                   </div>
 
                   <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -179,7 +179,7 @@ export function EnterpriseSection() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -6 }}
                             transition={{ duration: 0.3 }}
-                            className="font-[family-name:var(--font-display)] text-base font-medium text-foreground max-w-[120px] leading-tight"
+                            className="font-[family-name:var(--font-display)] text-base font-medium text-white max-w-[120px] leading-tight"
                           >
                             {views[tab].centerLabel}
                           </motion.span>
@@ -191,7 +191,7 @@ export function EnterpriseSection() {
                       {views[tab].data.map((item, index) => (
                         <motion.div
                           key={item.name}
-                          className="flex items-center justify-between gap-4 rounded-lg px-3 py-3 -mx-3 transition-colors hover:bg-secondary/50"
+                          className="flex items-center justify-between gap-4 rounded-lg px-3 py-3 -mx-3 transition-colors hover:bg-white/5"
                           whileHover={{ x: 4, transition: { duration: 0.2 } }}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
@@ -202,9 +202,9 @@ export function EnterpriseSection() {
                               className="w-5 h-5 rounded-sm shrink-0 transition-transform duration-300 hover:scale-125"
                               style={{ backgroundColor: item.color }}
                             />
-                            <span className="text-lg md:text-xl text-foreground font-medium">{item.name}</span>
+                            <span className="text-lg md:text-xl text-white font-medium">{item.name}</span>
                           </div>
-                          <span className="text-xl md:text-2xl text-foreground font-semibold tabular-nums">{item.value}%</span>
+                          <span className="text-xl md:text-2xl text-white font-semibold tabular-nums">{item.value}%</span>
                         </motion.div>
                       ))}
                     </div>

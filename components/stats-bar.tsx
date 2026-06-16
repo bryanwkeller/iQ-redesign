@@ -34,31 +34,31 @@ const stats = [
 
 export function StatsBar() {
   return (
-    <section id="about" className="py-16 lg:py-24 bg-[oklch(0.15_0.03_260)]">
+    <section id="about" className="py-16 lg:py-24 bg-secondary">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Heading block fills the offset gap (cols 1–2, row 1) */}
           <StaggerItem className="sm:col-span-2 flex flex-col justify-center pr-0 lg:pr-6 mb-4 sm:mb-0">
-            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-medium leading-tight mb-5">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight mb-5">
               The agency that enterprises trust
             </h2>
-            <p className="text-lg text-white/60 leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               Orchestrating AI, data, and industry expertise to meet your customers in their moment, and convert that signal into a measurable business impact.
             </p>
           </StaggerItem>
 
           {stats.map((stat) => (
             <StaggerItem key={stat.headline + stat.description}>
-              <HoverCard borderAnimation dark className="p-6 h-full">
+              <HoverCard borderAnimation className="p-6 h-full">
                 {stat.eyebrow && (
-                  <p className="text-sm font-medium text-primary uppercase tracking-wide mb-2">
+                  <p className="text-sm font-medium text-[oklch(0.46_0.01_85)] uppercase tracking-wide mb-2">
                     {stat.eyebrow}
                   </p>
                 )}
-                <p className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-semibold text-white mb-3 leading-tight">
+                <p className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-semibold text-foreground mb-3 leading-tight">
                   {stat.headline}
                 </p>
-                <p className="text-sm text-white/55 leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {stat.description}
                 </p>
               </HoverCard>
