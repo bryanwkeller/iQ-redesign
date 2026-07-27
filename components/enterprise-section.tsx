@@ -9,7 +9,6 @@ import {
   Cell,
   LabelList,
   ResponsiveContainer,
-  Tooltip,
   XAxis,
   YAxis,
 } from "recharts"
@@ -34,12 +33,6 @@ const industryData = [
   { name: "IT Services", value: 5, color: "oklch(0.72 0.08 85)" },
   { name: "Healthcare", value: 6, color: "oklch(0.60 0.10 150)" },
 ]
-
-const tooltipStyle = {
-  backgroundColor: "var(--card)",
-  border: "1px solid var(--border)",
-  borderRadius: 8,
-}
 
 /** Mounts children only once scrolled into view so entry animations are always perceivable. */
 function AnimatedChart({ children, height = 260 }: { children: ReactNode; height?: number }) {
@@ -69,10 +62,6 @@ function FortuneChart() {
           tick={{ fill: "rgba(255,255,255,0.35)", fontSize: 11 }}
           tickLine={false}
           axisLine={false}
-        />
-        <Tooltip
-          formatter={(value: number) => [`${value}%`, "Share"]}
-          contentStyle={tooltipStyle}
         />
         <Bar dataKey="value" radius={[6, 6, 0, 0]} isAnimationActive animationDuration={800} animationEasing="ease-out" maxBarSize={64}>
           {fortuneData.map((entry, i) => (
@@ -105,7 +94,6 @@ function SizeChart() {
           axisLine={false}
           width={104}
         />
-        <Tooltip formatter={(value: number) => [`${value}%`, "Share"]} contentStyle={tooltipStyle} />
         <Bar
           dataKey="value"
           radius={[0, 6, 6, 0]}
