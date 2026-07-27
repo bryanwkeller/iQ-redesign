@@ -129,7 +129,7 @@ function LayerCardContent({ layer }: { layer: LayerCard }) {
             <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-1">
               {layer.eyebrow}
             </p>
-            <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-medium text-foreground leading-tight">
+            <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-bold text-foreground leading-tight">
               {layer.title}
             </h3>
           </div>
@@ -175,12 +175,12 @@ function CenterImpactCard() {
         aria-hidden="true"
       />
       <div className="relative z-10 max-w-xs">
-        <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-medium text-white mb-4 leading-tight">
+        <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
           Agentic Solutions
         </h2>
         <p className="text-white/70 text-sm mb-3">Powered by</p>
         <div className="inline-flex items-center justify-center rounded-xl border border-white/25 bg-white/10 backdrop-blur-sm px-6 py-3 mb-6">
-          <span className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-medium text-white">
+          <span className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-bold text-white">
             iQ.Impact
           </span>
         </div>
@@ -208,7 +208,7 @@ export function AgenticSolutions() {
             </span>
             <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
           </div>
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-bold leading-tight">
             Powered by <span className="text-primary">iQ.Impact</span>
           </h2>
         </ScrollReveal>

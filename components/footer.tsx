@@ -29,7 +29,7 @@ export function Footer() {
     <footer className="border-t border-border bg-card">
       <div className="bg-primary/5 border-b border-border py-4">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <p className="font-[family-name:var(--font-display)] text-lg md:text-xl font-medium text-foreground text-center">
+          <p className="font-[family-name:var(--font-display)] text-lg md:text-xl font-bold text-foreground text-center">
             Empowering Clients. Unleashing Growth
           </p>
         </div>
@@ -125,7 +125,7 @@ export function Footer() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 pt-8 border-t border-border"
         >
-          <p className="text-sm text-muted-foreground text-center">
+          <p className="font-[family-name:var(--font-legal)] text-sm text-muted-foreground text-center">
             <Link href="https://www.iquanti.com/privacy-policy/" className="underline hover:text-foreground">
               Privacy Policy
             </Link>

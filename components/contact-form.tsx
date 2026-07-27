@@ -59,7 +59,7 @@ export function ContactForm() {
             transition={{ duration: 0.6 }}
             className="lg:pt-4"
           >
-            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white mb-6 font-medium leading-tight">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white mb-6 font-bold leading-tight">
               Get In Touch
             </h2>
             <p className="text-lg text-white/60 leading-relaxed">
@@ -75,7 +75,7 @@ export function ContactForm() {
             {submitted ? (
               <div className="bg-card border border-border rounded-2xl p-10 flex flex-col items-center text-center gap-4">
                 <CheckCircle2 className="h-12 w-12 text-primary" />
-                <h3 className="font-[family-name:var(--font-display)] text-xl font-medium text-foreground">
+                <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-foreground">
                   We&apos;ll be in touch soon.
                 </h3>
                 <p className="text-muted-foreground">
@@ -88,7 +88,7 @@ export function ContactForm() {
                 className="bg-card border border-border rounded-2xl p-8 space-y-5"
               >
                 <div>
-                  <h3 className="font-[family-name:var(--font-display)] text-xl font-medium text-foreground mb-1">
+                  <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-foreground mb-1">
                     Getting started is easy.
                   </h3>
                   <p className="text-sm text-muted-foreground">required fields*</p>

@@ -1,17 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: '--font-inter',
-})
-
-const spaceGrotesk = Space_Grotesk({ 
-  subsets: ["latin"],
-  variable: '--font-space-grotesk',
-})
+// Brand typefaces (Neulis Neue + Area Normal) served via Adobe Fonts web project.
+const ADOBE_FONTS_KIT_URL = 'https://use.typekit.net/ioy5euq.css'
 
 export const metadata: Metadata = {
   title: 'iQuanti | Performance Marketing for Banking, Insurance & Fintech',
@@ -46,7 +38,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} bg-background`}>
+    <html lang="en" className="bg-background">
+      <head>
+        <link rel="stylesheet" href={ADOBE_FONTS_KIT_URL} />
+      </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

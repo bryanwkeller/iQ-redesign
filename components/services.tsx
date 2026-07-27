@@ -133,7 +133,7 @@ export function Services() {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mb-16"
         >
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-foreground mb-4 font-medium">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-foreground mb-4 font-bold">
             What We Do
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">

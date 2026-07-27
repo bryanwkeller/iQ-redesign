@@ -32,7 +32,7 @@ export function RecognitionTrust() {
     <section id="our-work" className="py-16 lg:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal className="text-left max-w-2xl mb-16">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight mb-6">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-bold leading-tight mb-6">
             Recognition & trust
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -47,7 +47,7 @@ export function RecognitionTrust() {
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-4 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110">
                   <item.icon className="h-7 w-7" />
                 </div>
-                <h3 className="font-[family-name:var(--font-display)] text-lg font-medium text-foreground mb-3">
+                <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-foreground mb-3">
                   {item.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">

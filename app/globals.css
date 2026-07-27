@@ -63,8 +63,10 @@
 }
 
 @theme inline {
-  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
-  --font-display: 'Space Grotesk', 'Space Grotesk Fallback', system-ui, sans-serif;
+  /* Brand typefaces via Adobe Fonts (see app/layout.tsx): Area Normal (body) + Neulis Neue (headline) */
+  --font-sans: 'area-normal', system-ui, sans-serif;
+  --font-display: 'neulis-neue', system-ui, sans-serif;
+  --font-legal: 'area-normal-light', system-ui, sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);

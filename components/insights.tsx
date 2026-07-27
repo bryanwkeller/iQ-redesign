@@ -41,7 +41,7 @@ export function Insights() {
     <section id="insights" className="py-16 lg:py-24 bg-secondary">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight mb-4">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-bold leading-tight mb-4">
             Insights
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -69,7 +69,7 @@ export function Insights() {
                         {tile.edition}
                       </span>
                     )}
-                    <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-medium text-white leading-tight">
+                    <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-bold text-white leading-tight">
                       {tile.title}
                     </h3>
                   </div>
@@ -94,7 +94,7 @@ export function Insights() {
                   {"date" in article && article.date && (
                     <p className="text-sm text-muted-foreground mb-2">{article.date}</p>
                   )}
-                  <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-medium text-foreground leading-tight mb-3">
+                  <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-bold text-foreground leading-tight mb-3">
                     {article.title}
                   </h3>
                   {"description" in article && article.description && (

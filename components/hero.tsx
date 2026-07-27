@@ -201,7 +201,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground leading-[1.05] tracking-tight mb-6 text-balance font-medium"
+            className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground leading-[1.05] tracking-tight mb-6 text-balance font-bold"
           >
             Turn Every Consumer Signal Into{" "}
             <span className="text-primary">Enterprise Growth</span>
@@ -211,7 +211,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-12 leading-relaxed text-pretty"
+            className="text-lg md:text-xl font-bold text-muted-foreground max-w-3xl mb-12 leading-relaxed text-pretty"
           >
             Proprietary AI-Powered Tech. Deep industry expertise. A data science core built for enterprise complexity. iQuanti drives measurable acquisition growth for global brands.
           </motion.p>

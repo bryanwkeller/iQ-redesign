@@ -159,7 +159,7 @@ function DataCard({
   return (
     <div className="h-full rounded-xl border border-white/10 bg-white/[0.05] shadow-sm p-6 lg:p-7 flex flex-col">
       <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">{eyebrow}</p>
-      <h3 className="font-[family-name:var(--font-display)] text-lg md:text-xl font-medium text-white leading-snug mb-1">
+      <h3 className="font-[family-name:var(--font-display)] text-lg md:text-xl font-bold text-white leading-snug mb-1">
         {title}
       </h3>
       <p className="text-sm text-white/50 mb-6">{caption}</p>
@@ -175,7 +175,7 @@ export function EnterpriseSection() {
     <section className="py-16 lg:py-24 bg-[oklch(0.15_0.05_264)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal className="text-left max-w-3xl mb-12">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-medium leading-tight mb-6">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-bold leading-tight mb-6">
             Built for enterprise-grade complexity and scale
           </h2>
           <p className="text-lg text-white/60 leading-relaxed">

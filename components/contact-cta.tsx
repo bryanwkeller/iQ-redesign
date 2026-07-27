@@ -42,7 +42,7 @@ export function ContactCTA() {
                 Get In Touch
               </span>
             </div>
-            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 font-medium leading-tight">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 font-bold leading-tight">
               Ready to outperform your category?
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -59,7 +59,7 @@ export function ContactCTA() {
             {submitted ? (
               <div className="bg-card border border-border rounded-2xl p-10 flex flex-col items-center text-center gap-4">
                 <CheckCircle2 className="h-12 w-12 text-primary" />
-                <h3 className="font-[family-name:var(--font-display)] text-xl font-medium text-foreground">
+                <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-foreground">
                   {"We'll be in touch soon."}
                 </h3>
                 <p className="text-muted-foreground">

@@ -66,7 +66,7 @@ export function HumanAI() {
               </span>
             </div>
 
-            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight font-medium">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight font-bold">
               AI is only as powerful as the{" "}
               <span className="text-primary">people</span> driving it.
             </h2>
@@ -137,7 +137,7 @@ export function HumanAI() {
                 <capability.icon className="w-5 h-5 text-primary" />
               </div>
 
-              <h3 className="font-[family-name:var(--font-display)] text-lg font-medium text-background mb-1">
+              <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-background mb-1">
                 {capability.title}
               </h3>
               <p className="text-xs text-primary mb-3 uppercase tracking-wider">

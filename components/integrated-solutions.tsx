@@ -92,7 +92,7 @@ function Hex({
           {pillar.subtitle}
         </span>
         <span
-          className={`font-[family-name:var(--font-display)] text-sm sm:text-base font-medium leading-tight transition-colors duration-300 ${
+          className={`font-[family-name:var(--font-display)] text-sm sm:text-base font-bold leading-tight transition-colors duration-300 ${
             popped ? "text-primary" : "text-foreground"
           }`}
         >
@@ -124,7 +124,7 @@ export function IntegratedSolutions() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1} className="mb-14 max-w-2xl mx-auto text-center">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-medium leading-tight mb-4">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-bold leading-tight mb-4">
             <span className="text-primary">IQ.Impact</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -167,7 +167,7 @@ export function IntegratedSolutions() {
               <p className="text-xs font-semibold uppercase tracking-widest text-[oklch(0.46_0.01_85)] mb-2">
                 {current.subtitle}
               </p>
-              <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-medium text-foreground mb-3">
+              <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-bold text-foreground mb-3">
                 {current.title}
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-5">{current.description}</p>

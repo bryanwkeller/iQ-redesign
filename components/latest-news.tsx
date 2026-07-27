@@ -99,7 +99,7 @@ export function LatestNews() {
                 Latest at iQuanti
               </span>
             </div>
-            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-foreground font-medium leading-tight">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-foreground font-bold leading-tight">
               Insights, research & results
             </h2>
           </div>

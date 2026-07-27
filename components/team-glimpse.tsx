@@ -34,7 +34,7 @@ export function TeamGlimpse() {
               </span>
             </div>
 
-            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight font-medium">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight font-bold">
               Built by marketers,{" "}
               <span className="text-primary">powered by engineers.</span>
             </h2>
@@ -45,15 +45,15 @@ export function TeamGlimpse() {
 
             <div className="grid grid-cols-3 gap-8 mb-10">
               <div>
-                <div className="font-[family-name:var(--font-display)] text-3xl font-medium text-primary">400+</div>
+                <div className="font-[family-name:var(--font-display)] text-3xl font-bold text-primary">400+</div>
                 <div className="text-sm text-background/60 mt-1">Team Members</div>
               </div>
               <div>
-                <div className="font-[family-name:var(--font-display)] text-3xl font-medium text-primary">4</div>
+                <div className="font-[family-name:var(--font-display)] text-3xl font-bold text-primary">4</div>
                 <div className="text-sm text-background/60 mt-1">Global Offices</div>
               </div>
               <div>
-                <div className="font-[family-name:var(--font-display)] text-3xl font-medium text-primary">85%</div>
+                <div className="font-[family-name:var(--font-display)] text-3xl font-bold text-primary">85%</div>
                 <div className="text-sm text-background/60 mt-1">Client Retention</div>
               </div>
             </div>

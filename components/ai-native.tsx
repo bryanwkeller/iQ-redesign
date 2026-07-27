@@ -55,7 +55,7 @@ export function AiNative() {
                 AI-native approach
               </span>
             </div>
-            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-medium leading-tight mb-6">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-bold leading-tight mb-6">
               AI runs through everything we do
             </h2>
             <p className="text-lg text-white/60 leading-relaxed">
@@ -76,7 +76,7 @@ export function AiNative() {
                   >
                     <AccordionTrigger className="hover:no-underline py-5 [&[data-state=open]>svg]:text-primary [&>svg]:text-white/40">
                       <div className="flex flex-col items-start gap-2 text-left">
-                        <span className="font-[family-name:var(--font-display)] text-lg font-medium text-white">
+                        <span className="font-[family-name:var(--font-display)] text-lg font-bold text-white">
                           {product.name}
                         </span>
                         <Badge
