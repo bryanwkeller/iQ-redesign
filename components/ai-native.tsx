@@ -13,27 +13,27 @@ import { ScrollReveal } from "@/components/scroll-reveal"
 const products = [
   {
     name: "SIERA",
-    category: "Search Intelligence",
+    category: "Organic & Search",
     description: "Multi-surface search intelligence — SEO, GEO & LLM visibility in one engine.",
   },
   {
     name: "LEAP",
-    category: "Experience & CRO",
+    category: "SEO Intelligence",
     description: "UX scoring to prototyping, end to end — with BFSI intelligence built in.",
   },
   {
     name: "ALPS",
-    category: "SEO Intelligence",
+    category: "Creative Intelligence",
     description: "Predictive SEO gap scoring that surfaces growth opportunities first.",
   },
   {
     name: "CreativeiQ",
-    category: "Creative Intelligence",
+    category: "Agentic AI",
     description: "AI creative auditing that accelerates ad production at scale.",
   },
   {
     name: "Agentic Suite",
-    category: "Agentic AI",
+    category: "Paid Media",
     description: "Agentic AI embedded across the full iQuanti solution stack.",
   },
   {

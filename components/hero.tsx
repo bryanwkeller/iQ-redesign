@@ -203,8 +203,8 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground leading-[1.05] tracking-tight mb-6 text-balance font-medium"
           >
-            Turn Every Consumer Signal into{" "}
-            <span className="text-primary">Impactful Growth</span>
+            Turn Every Consumer Signal Into{" "}
+            <span className="text-primary">Enterprise Growth</span>
           </motion.h1>
 
           <motion.p
@@ -213,7 +213,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-12 leading-relaxed text-pretty"
           >
-            Orchestrating AI, data, and industry expertise to meet your customers in their moment, and convert that signal into a measurable business impact.
+            Proprietary AI-Powered Tech. Deep industry expertise. A data science core built for enterprise complexity. iQuanti drives measurable acquisition growth for global brands.
           </motion.p>
 
           <motion.div

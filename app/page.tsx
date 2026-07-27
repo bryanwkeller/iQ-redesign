@@ -3,7 +3,8 @@ import { Hero } from "@/components/hero"
 import { StatsBar } from "@/components/stats-bar"
 import { EnterpriseSection } from "@/components/enterprise-section"
 import { LatestNews } from "@/components/latest-news"
-import { IntegratedSolutions } from "@/components/integrated-solutions"
+import { AgenticSolutions } from "@/components/agentic-solutions"
+import { Insights } from "@/components/insights"
 import { AiNative } from "@/components/ai-native"
 import { RecognitionTrust } from "@/components/recognition-trust"
 import { ContactForm } from "@/components/contact-form"
@@ -18,8 +19,9 @@ export default function Home() {
         <EnterpriseSection />
         <StatsBar />
         <LatestNews />
-        <IntegratedSolutions />
+        <AgenticSolutions />
         <AiNative />
+        <Insights />
         <RecognitionTrust />
         <ContactForm />
       </main>
