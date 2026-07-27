@@ -61,7 +61,7 @@ export function HumanAI() {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-12 bg-primary" />
-              <span className="text-sm font-medium tracking-wider uppercase text-primary">
+              <span className="font-[family-name:var(--font-label)] text-sm font-normal tracking-wider uppercase text-primary">
                 Our Approach
               </span>
             </div>
@@ -140,7 +140,7 @@ export function HumanAI() {
               <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-background mb-1">
                 {capability.title}
               </h3>
-              <p className="text-xs text-primary mb-3 uppercase tracking-wider">
+              <p className="font-[family-name:var(--font-label)] text-xs text-primary mb-3 uppercase tracking-wider">
                 {capability.subtitle}
               </p>
               <p className="text-sm text-background/60">

@@ -60,12 +60,12 @@ export function Insights() {
                   <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_80%_20%,white_0%,transparent_50%)]" />
                   <div className="relative z-10">
                     {"tag" in tile && tile.tag && (
-                      <span className="inline-block mb-3 text-xs font-semibold uppercase tracking-wider text-white/90 bg-white/15 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <span className="font-[family-name:var(--font-label)] inline-block mb-3 text-xs font-normal uppercase tracking-wider text-white/90 bg-white/15 backdrop-blur-sm px-3 py-1 rounded-full">
                         {tile.tag}
                       </span>
                     )}
                     {"edition" in tile && tile.edition && (
-                      <span className="inline-block mb-3 text-xs font-semibold uppercase tracking-wider text-white/90 bg-white/15 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <span className="font-[family-name:var(--font-label)] inline-block mb-3 text-xs font-normal uppercase tracking-wider text-white/90 bg-white/15 backdrop-blur-sm px-3 py-1 rounded-full">
                         {tile.edition}
                       </span>
                     )}

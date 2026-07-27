@@ -97,7 +97,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold text-foreground mb-2 uppercase tracking-wide">
+            <h3 className="font-[family-name:var(--font-label)] text-sm font-normal text-foreground mb-2 uppercase tracking-wide">
               Stay Connected
             </h3>
             <p className="text-sm text-muted-foreground mb-4">

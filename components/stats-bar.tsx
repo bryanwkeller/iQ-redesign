@@ -51,11 +51,11 @@ export function StatsBar() {
             <StaggerItem key={stat.headline + stat.description}>
               <HoverCard borderAnimation className="p-6 h-full">
                 {stat.eyebrow && (
-                  <p className="text-sm font-medium text-[oklch(0.46_0.01_85)] uppercase tracking-wide mb-2">
+                  <p className="font-[family-name:var(--font-label)] text-sm font-normal text-[oklch(0.46_0.01_85)] uppercase tracking-wide mb-2">
                     {stat.eyebrow}
                   </p>
                 )}
-                <p className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-foreground mb-3 leading-tight">
+                <p className="font-[family-name:var(--font-numeral)] text-3xl md:text-4xl font-thin text-foreground mb-3 leading-tight">
                   {stat.headline}
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
