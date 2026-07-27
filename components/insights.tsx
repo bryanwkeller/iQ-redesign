@@ -10,13 +10,13 @@ const featureTiles = [
     title: "Will Your Bank Be Cited in AI Search?",
     tag: "DMFS Toronto 2026",
     gradient:
-      "linear-gradient(135deg, oklch(0.55 0.08 250) 0%, oklch(0.35 0.06 260) 50%, oklch(0.25 0.04 260) 100%)",
+      "linear-gradient(135deg, oklch(0.55 0.08 257) 0%, oklch(0.35 0.06 264) 50%, oklch(0.25 0.04 264) 100%)",
   },
   {
     title: "Performance Marketing Report",
     edition: "Q2-2026 Edition",
     gradient:
-      "linear-gradient(135deg, oklch(0.45 0.12 260) 0%, oklch(0.30 0.08 260) 60%, oklch(0.20 0.05 260) 100%)",
+      "linear-gradient(135deg, oklch(0.45 0.12 264) 0%, oklch(0.30 0.08 264) 60%, oklch(0.20 0.05 264) 100%)",
   },
 ]
 
@@ -25,7 +25,7 @@ const articles = [
     title: "Turning Your Financial Services Website into a Revenue Engine with AI",
     cta: "Read More Blogs",
     gradient:
-      "linear-gradient(160deg, oklch(0.50 0.10 250) 0%, oklch(0.35 0.08 260) 100%)",
+      "linear-gradient(160deg, oklch(0.50 0.10 257) 0%, oklch(0.35 0.08 264) 100%)",
   },
   {
     date: "June 06, 2026",

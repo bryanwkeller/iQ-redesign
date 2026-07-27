@@ -165,12 +165,12 @@ function LayerCardContent({ layer }: { layer: LayerCard }) {
 
 function CenterImpactCard() {
   return (
-    <div className="relative overflow-hidden rounded-xl h-full min-h-[360px] lg:min-h-[620px] flex flex-col items-center justify-center text-center p-8 lg:p-10 bg-gradient-to-br from-[oklch(0.15_0.03_260)] via-[oklch(0.22_0.06_260)] to-[oklch(0.42_0.14_45)] shadow-lg">
+    <div className="relative overflow-hidden rounded-xl h-full min-h-[360px] lg:min-h-[620px] flex flex-col items-center justify-center text-center p-8 lg:p-10 bg-gradient-to-br from-[oklch(0.15_0.05_264)] via-[oklch(0.22_0.08_264)] to-[oklch(0.42_0.14_55.13)] shadow-lg">
       <div
         className="absolute inset-0 opacity-30 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 80%, oklch(0.68 0.19 50 / 0.35) 0%, transparent 50%), radial-gradient(circle at 80% 20%, oklch(0.55 0.12 260 / 0.4) 0%, transparent 45%)",
+            "radial-gradient(circle at 20% 80%, oklch(0.7395 0.1828 55.13 / 0.35) 0%, transparent 50%), radial-gradient(circle at 80% 20%, oklch(0.55 0.12 264 / 0.4) 0%, transparent 45%)",
         }}
         aria-hidden="true"
       />

@@ -25,7 +25,7 @@ const slides: Slide[] = [
     titleBold: "A Revenue Engine With AI",
     cta: "Watch Now",
     href: "#",
-    gradient: "radial-gradient(circle at 88% 120%, oklch(0.60 0.16 50 / 0.30), transparent 55%), linear-gradient(110deg, oklch(0.21 0.035 262) 0%, oklch(0.15 0.03 260) 60%, oklch(0.20 0.04 266) 100%)",
+    gradient: "radial-gradient(circle at 88% 120%, oklch(0.60 0.16 55.13 / 0.30), transparent 55%), linear-gradient(110deg, oklch(0.21 0.035 266) 0%, oklch(0.15 0.05 264) 60%, oklch(0.20 0.04 270) 100%)",
     speaker: { name: "Vishal Maru", title: "Vice President – Solutions", company: "iQuanti", initials: "VM" },
   },
   {
@@ -34,7 +34,7 @@ const slides: Slide[] = [
     titleBold: "AI Search in Financial Services",
     cta: "Read More",
     href: "#",
-    gradient: "radial-gradient(circle at 80% -15%, oklch(0.60 0.16 50 / 0.26), transparent 52%), linear-gradient(110deg, oklch(0.20 0.03 260) 0%, oklch(0.15 0.03 260) 62%, oklch(0.19 0.035 264) 100%)",
+    gradient: "radial-gradient(circle at 80% -15%, oklch(0.60 0.16 55.13 / 0.26), transparent 52%), linear-gradient(110deg, oklch(0.20 0.03 264) 0%, oklch(0.15 0.05 264) 62%, oklch(0.19 0.035 268) 100%)",
   },
   {
     category: "Case Study",
@@ -42,7 +42,7 @@ const slides: Slide[] = [
     titleBold: "152% Form-Fill Uplift",
     cta: "Read More",
     href: "#",
-    gradient: "radial-gradient(circle at 100% 50%, oklch(0.60 0.16 50 / 0.24), transparent 50%), linear-gradient(110deg, oklch(0.21 0.03 258) 0%, oklch(0.15 0.03 260) 60%, oklch(0.20 0.035 264) 100%)",
+    gradient: "radial-gradient(circle at 100% 50%, oklch(0.60 0.16 55.13 / 0.24), transparent 50%), linear-gradient(110deg, oklch(0.21 0.03 262) 0%, oklch(0.15 0.05 264) 60%, oklch(0.20 0.035 268) 100%)",
   },
   {
     category: "Report",
@@ -50,7 +50,7 @@ const slides: Slide[] = [
     titleBold: "BFSI Performance Marketing Benchmark",
     cta: "Get the Report",
     href: "#",
-    gradient: "radial-gradient(circle at 90% 120%, oklch(0.60 0.16 50 / 0.30), transparent 55%), linear-gradient(110deg, oklch(0.22 0.035 264) 0%, oklch(0.15 0.03 260) 60%, oklch(0.21 0.04 268) 100%)",
+    gradient: "radial-gradient(circle at 90% 120%, oklch(0.60 0.16 55.13 / 0.30), transparent 55%), linear-gradient(110deg, oklch(0.22 0.035 268) 0%, oklch(0.15 0.05 264) 60%, oklch(0.21 0.04 272) 100%)",
   },
   {
     category: "Guide",
@@ -58,7 +58,7 @@ const slides: Slide[] = [
     titleBold: "Agentic AI",
     cta: "Read More",
     href: "#",
-    gradient: "radial-gradient(circle at 76% -12%, oklch(0.60 0.16 50 / 0.26), transparent 52%), linear-gradient(110deg, oklch(0.20 0.03 261) 0%, oklch(0.15 0.03 260) 62%, oklch(0.19 0.035 265) 100%)",
+    gradient: "radial-gradient(circle at 76% -12%, oklch(0.60 0.16 55.13 / 0.26), transparent 52%), linear-gradient(110deg, oklch(0.20 0.03 265) 0%, oklch(0.15 0.05 264) 62%, oklch(0.19 0.035 269) 100%)",
   },
 ]
 

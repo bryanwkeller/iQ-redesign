@@ -15,8 +15,8 @@
   --popover: oklch(0.99 0.005 85);
   --popover-foreground: oklch(0.18 0.01 250);
   
-  /* iQuanti brand orange */
-  --primary: oklch(0.68 0.19 50);
+  /* iQuanti brand orange — hue aligned to official iQ Orange (#FF8500), lightness/chroma tuned for WCAG contrast */
+  --primary: oklch(0.68 0.19 55.13);
   --primary-foreground: oklch(0.99 0 0);
   
   /* Secondary - warm cream */
@@ -28,7 +28,7 @@
   --muted-foreground: oklch(0.45 0.01 250);
   
   /* Accent - same as primary for consistency */
-  --accent: oklch(0.68 0.19 50);
+  --accent: oklch(0.68 0.19 55.13);
   --accent-foreground: oklch(0.99 0 0);
   
   --destructive: oklch(0.577 0.245 27.325);
@@ -37,9 +37,9 @@
   /* Subtle warm borders */
   --border: oklch(0.88 0.015 85);
   --input: oklch(0.92 0.01 85);
-  --ring: oklch(0.68 0.19 50);
+  --ring: oklch(0.68 0.19 55.13);
 
-  --chart-1: oklch(0.68 0.19 50);
+  --chart-1: oklch(0.68 0.19 55.13);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
@@ -48,12 +48,18 @@
   
   --sidebar: oklch(0.97 0.008 85);
   --sidebar-foreground: oklch(0.18 0.01 250);
-  --sidebar-primary: oklch(0.68 0.19 50);
+  --sidebar-primary: oklch(0.68 0.19 55.13);
   --sidebar-primary-foreground: oklch(0.99 0 0);
   --sidebar-accent: oklch(0.94 0.012 85);
   --sidebar-accent-foreground: oklch(0.18 0.01 250);
   --sidebar-border: oklch(0.88 0.015 85);
-  --sidebar-ring: oklch(0.68 0.19 50);
+  --sidebar-ring: oklch(0.68 0.19 55.13);
+
+  /* Brand palette reference (Figma "Brand guidelines-final") */
+  --brand-elevate-grey: oklch(0.3896 0.0219 264.28); /* Elevate Grey #3F4551 */
+  --brand-orange: oklch(0.7395 0.1828 55.13); /* iQ Orange #FF8500 */
+  --brand-electric-blue: oklch(0.6048 0.2166 257.21); /* Electric Blue #007BFF */
+  --brand-midnight: oklch(0.3598 0.2155 264.12); /* Midnight #001FAB */
 }
 
 @theme inline {
@@ -96,6 +102,10 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand-elevate-grey: var(--brand-elevate-grey);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-electric-blue: var(--brand-electric-blue);
+  --color-brand-midnight: var(--brand-midnight);
 }
 
 @keyframes marquee {

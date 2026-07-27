@@ -15,20 +15,20 @@ import {
 import { ScrollReveal } from "@/components/scroll-reveal"
 
 const fortuneData = [
-  { name: "Mid-Market", value: 25, color: "oklch(0.55 0.12 250)" },
-  { name: "Fortune 500", value: 45, color: "oklch(0.68 0.19 50)" },
+  { name: "Mid-Market", value: 25, color: "oklch(0.6048 0.2166 257.21)" },
+  { name: "Fortune 500", value: 45, color: "oklch(0.7395 0.1828 55.13)" },
   { name: "Fortune 100", value: 30, color: "oklch(0.72 0.08 85)" },
 ]
 
 const sizeData = [
-  { name: "Enterprise", value: 55, color: "oklch(0.68 0.19 50)" },
-  { name: "Mid-Market", value: 30, color: "oklch(0.55 0.12 250)" },
+  { name: "Enterprise", value: 55, color: "oklch(0.7395 0.1828 55.13)" },
+  { name: "Mid-Market", value: 30, color: "oklch(0.6048 0.2166 257.21)" },
   { name: "Growth", value: 15, color: "oklch(0.72 0.08 85)" },
 ]
 
 const industryData = [
-  { name: "Banking & Finance", value: 66, color: "oklch(0.68 0.19 50)" },
-  { name: "Retail & Mfg", value: 15, color: "oklch(0.55 0.12 250)" },
+  { name: "Banking & Finance", value: 66, color: "oklch(0.7395 0.1828 55.13)" },
+  { name: "Retail & Mfg", value: 15, color: "oklch(0.6048 0.2166 257.21)" },
   { name: "Insurance", value: 8, color: "oklch(0.65 0.15 200)" },
   { name: "IT Services", value: 5, color: "oklch(0.72 0.08 85)" },
   { name: "Healthcare", value: 6, color: "oklch(0.60 0.10 150)" },
@@ -172,7 +172,7 @@ function DataCard({
 
 export function EnterpriseSection() {
   return (
-    <section className="py-16 lg:py-24 bg-[oklch(0.15_0.03_260)]">
+    <section className="py-16 lg:py-24 bg-[oklch(0.15_0.05_264)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal className="text-left max-w-3xl mb-12">
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-medium leading-tight mb-6">
