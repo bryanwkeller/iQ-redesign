@@ -60,7 +60,7 @@ export function HoverCard({ children, className, borderAnimation = false, dark =
             height={size.h - 2}
             rx="11"
             fill="none"
-            stroke="oklch(0.68 0.19 50)"
+            stroke="oklch(0.7395 0.1828 55.13)"
             strokeWidth="2"
             strokeLinecap="round"
             initial={{ pathLength: 0, opacity: 0 }}

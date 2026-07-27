@@ -89,7 +89,7 @@ function NetworkCanvas() {
             ctx.beginPath()
             ctx.moveTo(a.x, a.y)
             ctx.lineTo(b.x, b.y)
-            ctx.strokeStyle = `oklch(0.68 0.19 50 / ${alpha})`
+            ctx.strokeStyle = `oklch(0.7395 0.1828 55.13 / ${alpha})`
             ctx.lineWidth = 1
             ctx.stroke()
           }
@@ -101,8 +101,8 @@ function NetworkCanvas() {
           node.x, node.y, 0,
           node.x, node.y, node.radius * 3.5
         )
-        grd.addColorStop(0, "oklch(0.68 0.19 50 / 0.08)")
-        grd.addColorStop(1, "oklch(0.68 0.19 50 / 0)")
+        grd.addColorStop(0, "oklch(0.7395 0.1828 55.13 / 0.08)")
+        grd.addColorStop(1, "oklch(0.7395 0.1828 55.13 / 0)")
         ctx.beginPath()
         ctx.arc(node.x, node.y, node.radius * 3.5, 0, Math.PI * 2)
         ctx.fillStyle = grd
@@ -110,7 +110,7 @@ function NetworkCanvas() {
 
         ctx.beginPath()
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2)
-        ctx.fillStyle = "oklch(0.68 0.19 50 / 0.35)"
+        ctx.fillStyle = "oklch(0.7395 0.1828 55.13 / 0.35)"
         ctx.fill()
       }
 

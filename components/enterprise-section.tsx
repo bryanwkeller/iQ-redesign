@@ -7,8 +7,8 @@ import { ScrollReveal } from "@/components/scroll-reveal"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const industryData = [
-  { name: "Banking & Finance", value: 60, color: "oklch(0.68 0.19 50)" },
-  { name: "Retail & Mfg", value: 14, color: "oklch(0.55 0.12 250)" },
+  { name: "Banking & Finance", value: 60, color: "oklch(0.7395 0.1828 55.13)" },
+  { name: "Retail & Mfg", value: 14, color: "oklch(0.6048 0.2166 257.21)" },
   { name: "Insurance", value: 7, color: "oklch(0.65 0.15 200)" },
   { name: "IT Services", value: 5, color: "oklch(0.72 0.08 85)" },
   { name: "Healthcare", value: 5, color: "oklch(0.60 0.10 150)" },
@@ -16,14 +16,14 @@ const industryData = [
 ]
 
 const fortuneData = [
-  { name: "Fortune 500", value: 45, color: "oklch(0.68 0.19 50)" },
-  { name: "Fortune 1000", value: 30, color: "oklch(0.55 0.12 250)" },
+  { name: "Fortune 500", value: 45, color: "oklch(0.7395 0.1828 55.13)" },
+  { name: "Fortune 1000", value: 30, color: "oklch(0.6048 0.2166 257.21)" },
   { name: "Mid-Market", value: 25, color: "oklch(0.72 0.08 85)" },
 ]
 
 const sizeData = [
-  { name: "Enterprise", value: 55, color: "oklch(0.68 0.19 50)" },
-  { name: "Mid-Market", value: 30, color: "oklch(0.55 0.12 250)" },
+  { name: "Enterprise", value: 55, color: "oklch(0.7395 0.1828 55.13)" },
+  { name: "Mid-Market", value: 30, color: "oklch(0.6048 0.2166 257.21)" },
   { name: "Growth", value: 15, color: "oklch(0.72 0.08 85)" },
 ]
 
