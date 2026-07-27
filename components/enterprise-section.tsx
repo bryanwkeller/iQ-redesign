@@ -1,24 +1,24 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion, AnimatePresence, useInView } from "framer-motion"
-import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
+import { useRef, type ReactNode } from "react"
+import { motion, useInView } from "framer-motion"
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  LabelList,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts"
 import { ScrollReveal } from "@/components/scroll-reveal"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
-const industryData = [
-  { name: "Banking & Finance", value: 60, color: "oklch(0.68 0.19 50)" },
-  { name: "Retail & Mfg", value: 14, color: "oklch(0.55 0.12 250)" },
-  { name: "Insurance", value: 7, color: "oklch(0.65 0.15 200)" },
-  { name: "IT Services", value: 5, color: "oklch(0.72 0.08 85)" },
-  { name: "Healthcare", value: 5, color: "oklch(0.60 0.10 150)" },
-  { name: "Other", value: 9, color: "oklch(0.75 0.05 85)" },
-]
 
 const fortuneData = [
+  { name: "Mid-Market", value: 25, color: "oklch(0.55 0.12 250)" },
   { name: "Fortune 500", value: 45, color: "oklch(0.68 0.19 50)" },
-  { name: "Fortune 1000", value: 30, color: "oklch(0.55 0.12 250)" },
-  { name: "Mid-Market", value: 25, color: "oklch(0.72 0.08 85)" },
+  { name: "Fortune 100", value: 30, color: "oklch(0.72 0.08 85)" },
 ]
 
 const sizeData = [
@@ -27,104 +27,166 @@ const sizeData = [
   { name: "Growth", value: 15, color: "oklch(0.72 0.08 85)" },
 ]
 
-const views = {
-  fortune: {
-    label: "Fortune Ranking",
-    title: "Client base by Fortune ranking",
-    caption: "Share of our clients by Fortune classification",
-    centerLabel: "Fortune mix",
-    data: fortuneData,
-  },
-  size: {
-    label: "Company Size",
-    title: "Client base by company size",
-    caption: "Share of our clients by organization size",
-    centerLabel: "Size mix",
-    data: sizeData,
-  },
-  industry: {
-    label: "Industry",
-    title: "Client base by industry",
-    caption: "Share of our clients across sectors",
-    centerLabel: "Industry mix",
-    data: industryData,
-  },
-} as const
+const industryData = [
+  { name: "Banking & Finance", value: 66, color: "oklch(0.68 0.19 50)" },
+  { name: "Retail & Mfg", value: 15, color: "oklch(0.55 0.12 250)" },
+  { name: "Insurance", value: 8, color: "oklch(0.65 0.15 200)" },
+  { name: "IT Services", value: 5, color: "oklch(0.72 0.08 85)" },
+  { name: "Healthcare", value: 6, color: "oklch(0.60 0.10 150)" },
+]
 
-type ViewKey = keyof typeof views
-const order: ViewKey[] = ["fortune", "size", "industry"]
-const ROTATE_MS = 5000
+const tooltipStyle = {
+  backgroundColor: "var(--card)",
+  border: "1px solid var(--border)",
+  borderRadius: 8,
+}
 
-function DonutChart({ data }: { data: typeof industryData }) {
+/** Mounts children only once scrolled into view so entry animations are always perceivable. */
+function AnimatedChart({ children, height = 260 }: { children: ReactNode; height?: number }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, amount: 0.3 })
   return (
-    <ResponsiveContainer width="100%" height={280}>
-      <PieChart>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          innerRadius={70}
-          outerRadius={110}
-          paddingAngle={2}
-          dataKey="value"
-          startAngle={90}
-          endAngle={-270}
-          isAnimationActive
-          animationBegin={100}
-          animationDuration={850}
-          animationEasing="ease-out"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.color} />
-          ))}
-        </Pie>
-        <Tooltip
-          formatter={(value: number, name: string) => [`${value}%`, name]}
-          contentStyle={{
-            backgroundColor: "var(--card)",
-            border: "1px solid var(--border)",
-            borderRadius: "8px",
-          }}
+    <div ref={ref} style={{ minHeight: height }} className="flex items-center w-full">
+      {inView ? children : null}
+    </div>
+  )
+}
+
+function FortuneChart() {
+  return (
+    <ResponsiveContainer width="100%" height={260}>
+      <BarChart data={fortuneData} margin={{ top: 28, right: 8, left: -16, bottom: 0 }}>
+        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.1)" />
+        <XAxis
+          dataKey="name"
+          tick={{ fill: "rgba(255,255,255,0.6)", fontSize: 12 }}
+          tickLine={false}
+          axisLine={{ stroke: "rgba(255,255,255,0.15)" }}
         />
-      </PieChart>
+        <YAxis
+          domain={[0, 50]}
+          ticks={[0, 10, 20, 30, 40, 50]}
+          tick={{ fill: "rgba(255,255,255,0.35)", fontSize: 11 }}
+          tickLine={false}
+          axisLine={false}
+        />
+        <Tooltip
+          formatter={(value: number) => [`${value}%`, "Share"]}
+          contentStyle={tooltipStyle}
+        />
+        <Bar dataKey="value" radius={[6, 6, 0, 0]} isAnimationActive animationDuration={800} animationEasing="ease-out" maxBarSize={64}>
+          {fortuneData.map((entry, i) => (
+            <Cell key={i} fill={entry.color} />
+          ))}
+          <LabelList
+            dataKey="value"
+            position="top"
+            formatter={(v: number) => `${v}%`}
+            fill="#fff"
+            fontSize={13}
+            fontWeight={600}
+          />
+        </Bar>
+      </BarChart>
     </ResponsiveContainer>
   )
 }
 
-/** Mounts the donut only once it scrolls into view so the sweep-in animation is always perceivable. */
-function AnimatedDonut({ data }: { data: typeof industryData }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, amount: 0.4 })
+function SizeChart() {
   return (
-    <div ref={ref} className="h-full">
-      {inView && <DonutChart data={data} />}
+    <ResponsiveContainer width="100%" height={220}>
+      <BarChart data={sizeData} layout="vertical" margin={{ top: 8, right: 44, left: 8, bottom: 8 }}>
+        <XAxis type="number" hide domain={[0, 60]} />
+        <YAxis
+          type="category"
+          dataKey="name"
+          tick={{ fill: "rgba(255,255,255,0.75)", fontSize: 14, fontWeight: 500 }}
+          tickLine={false}
+          axisLine={false}
+          width={104}
+        />
+        <Tooltip formatter={(value: number) => [`${value}%`, "Share"]} contentStyle={tooltipStyle} />
+        <Bar
+          dataKey="value"
+          radius={[0, 6, 6, 0]}
+          barSize={24}
+          isAnimationActive
+          animationDuration={800}
+          animationEasing="ease-out"
+        >
+          {sizeData.map((entry, i) => (
+            <Cell key={i} fill={entry.color} />
+          ))}
+          <LabelList
+            dataKey="value"
+            position="right"
+            formatter={(v: number) => `${v}%`}
+            fill="rgba(255,255,255,0.9)"
+            fontSize={13}
+            fontWeight={600}
+          />
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
+  )
+}
+
+function IndustryList() {
+  return (
+    <div className="w-full space-y-5 py-1">
+      {industryData.map((item, i) => (
+        <div key={item.name}>
+          <div className="flex items-center justify-between gap-3 mb-2">
+            <span className="text-white font-medium">{item.name}</span>
+            <span className="text-white font-semibold tabular-nums">{item.value}%</span>
+          </div>
+          <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
+            <motion.div
+              className="h-full rounded-full"
+              style={{ backgroundColor: item.color }}
+              initial={{ width: 0 }}
+              animate={{ width: `${item.value}%` }}
+              transition={{ duration: 0.8, delay: i * 0.08, ease: "easeOut" }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function DataCard({
+  eyebrow,
+  title,
+  caption,
+  height,
+  children,
+}: {
+  eyebrow: string
+  title: string
+  caption: string
+  height?: number
+  children: ReactNode
+}) {
+  return (
+    <div className="h-full rounded-xl border border-white/10 bg-white/[0.05] shadow-sm p-6 lg:p-7 flex flex-col">
+      <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">{eyebrow}</p>
+      <h3 className="font-[family-name:var(--font-display)] text-lg md:text-xl font-medium text-white leading-snug mb-1">
+        {title}
+      </h3>
+      <p className="text-sm text-white/50 mb-6">{caption}</p>
+      <div className="flex-1 flex items-center">
+        <AnimatedChart height={height}>{children}</AnimatedChart>
+      </div>
     </div>
   )
 }
 
 export function EnterpriseSection() {
-  const [activeTab, setActiveTab] = useState<ViewKey>("fortune")
-  const [autoRotate, setAutoRotate] = useState(true)
-
-  useEffect(() => {
-    if (!autoRotate) return
-    const id = setInterval(() => {
-      setActiveTab((prev) => order[(order.indexOf(prev) + 1) % order.length])
-    }, ROTATE_MS)
-    return () => clearInterval(id)
-  }, [autoRotate])
-
-  const handleSelect = (value: string) => {
-    setAutoRotate(false)
-    setActiveTab(value as ViewKey)
-  }
-
-  const view = views[activeTab]
-
   return (
     <section className="py-16 lg:py-24 bg-[oklch(0.15_0.03_260)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <ScrollReveal className="text-left max-w-3xl mb-16">
+        <ScrollReveal className="text-left max-w-3xl mb-12">
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-medium leading-tight mb-6">
             Built for enterprise-grade complexity and scale
           </h2>
@@ -133,87 +195,39 @@ export function EnterpriseSection() {
           </p>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.15}>
-          <Tabs value={activeTab} onValueChange={handleSelect} className="w-full">
-            {/* Pill segment tabs */}
-            <div className="flex flex-wrap items-center gap-3 mb-4">
-              <TabsList className="inline-flex gap-1 p-1 rounded-full bg-white/[0.06] border border-white/10 h-auto">
-                {order.map((value) => (
-                  <TabsTrigger
-                    key={value}
-                    value={value}
-                    className="relative rounded-full px-5 py-2 text-sm font-medium transition-all cursor-pointer
-                               text-white/60 hover:text-white
-                               data-[state=active]:bg-white data-[state=active]:text-foreground
-                               data-[state=active]:shadow-sm data-[state=active]:font-semibold"
-                  >
-                    {views[value].label}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <ScrollReveal delay={0.05}>
+            <DataCard
+              eyebrow="Fortune Ranking"
+              title="Client Base By Fortune Ranking"
+              caption="Share Of Our Clients By Fortune Classification"
+            >
+              <FortuneChart />
+            </DataCard>
+          </ScrollReveal>
 
-            <div className="rounded-xl border border-white/10 bg-white/[0.05] shadow-sm">
-              {order.map((tab) => (
-                <TabsContent key={tab} value={tab} className="p-8 lg:p-12 mt-0">
-                  {/* Clear identifier of the represented visual */}
-                  <div className="mb-8" aria-live="polite">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
-                      {views[tab].label}
-                    </p>
-                    <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-medium text-white">
-                      {views[tab].title}
-                    </h3>
-                    <p className="text-sm text-white/60 mt-1">{views[tab].caption}</p>
-                  </div>
+          <ScrollReveal delay={0.1}>
+            <DataCard
+              eyebrow="Company Size"
+              title="Client Base By Company Size"
+              caption="Share Of Our Clients By Organization Size"
+              height={220}
+            >
+              <SizeChart />
+            </DataCard>
+          </ScrollReveal>
 
-                  <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    <div className="relative h-[280px]">
-                      <AnimatedDonut key={tab} data={views[tab].data} />
-                      {/* Center identifier inside donut */}
-                      <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
-                        <AnimatePresence mode="wait">
-                          <motion.span
-                            key={tab}
-                            initial={{ opacity: 0, y: 6 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -6 }}
-                            transition={{ duration: 0.3 }}
-                            className="font-[family-name:var(--font-display)] text-base font-medium text-white max-w-[120px] leading-tight"
-                          >
-                            {views[tab].centerLabel}
-                          </motion.span>
-                        </AnimatePresence>
-                      </div>
-                    </div>
-
-                    <div className="space-y-4">
-                      {views[tab].data.map((item, index) => (
-                        <motion.div
-                          key={item.name}
-                          className="flex items-center justify-between gap-4 rounded-lg px-3 py-3 -mx-3 transition-colors hover:bg-white/5"
-                          whileHover={{ x: 4, transition: { duration: 0.2 } }}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.05 }}
-                        >
-                          <div className="flex items-center gap-3.5">
-                            <div
-                              className="w-5 h-5 rounded-sm shrink-0 transition-transform duration-300 hover:scale-125"
-                              style={{ backgroundColor: item.color }}
-                            />
-                            <span className="text-lg md:text-xl text-white font-medium">{item.name}</span>
-                          </div>
-                          <span className="text-xl md:text-2xl text-white font-semibold tabular-nums">{item.value}%</span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </TabsContent>
-              ))}
-            </div>
-          </Tabs>
-        </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <DataCard
+              eyebrow="Industry"
+              title="Client Base By Industry"
+              caption="Share Of Our Clients Across Sectors"
+              height={220}
+            >
+              <IndustryList />
+            </DataCard>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   )
