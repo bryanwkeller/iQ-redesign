@@ -24,8 +24,6 @@ const articles = [
   {
     title: "Turning Your Financial Services Website into a Revenue Engine with AI",
     cta: "Read More Blogs",
-    gradient:
-      "linear-gradient(160deg, oklch(0.50 0.10 257) 0%, oklch(0.35 0.08 264) 100%)",
   },
   {
     date: "June 06, 2026",
@@ -79,18 +77,11 @@ export function Insights() {
           ))}
         </StaggerContainer>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6" staggerDelay={0.1}>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start" staggerDelay={0.1}>
           {articles.map((article) => (
             <StaggerItem key={article.title}>
-              <HoverCard className="overflow-hidden h-full flex flex-col">
-                {"gradient" in article && article.gradient ? (
-                  <div
-                    className="h-48 shrink-0"
-                    style={{ background: article.gradient }}
-                    aria-hidden="true"
-                  />
-                ) : null}
-                <div className="p-6 lg:p-8 flex flex-col flex-1">
+              <HoverCard className="overflow-hidden">
+                <div className="p-6 lg:p-8">
                   {"date" in article && article.date && (
                     <p className="text-sm text-muted-foreground mb-2">{article.date}</p>
                   )}
@@ -98,7 +89,7 @@ export function Insights() {
                     {article.title}
                   </h3>
                   {"description" in article && article.description && (
-                    <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
+                    <p className="text-muted-foreground leading-relaxed mb-6">
                       {article.description}
                     </p>
                   )}
