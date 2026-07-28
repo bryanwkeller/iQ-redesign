@@ -88,7 +88,7 @@ function Hex({
         className="flex flex-col items-center justify-center text-center px-4 cursor-pointer outline-none bg-secondary"
       >
         <Icon className="h-8 w-8 sm:h-9 sm:w-9 mb-2 text-primary" strokeWidth={1.75} aria-hidden="true" />
-        <span className="font-[family-name:var(--font-label)] text-[11px] sm:text-xs font-normal uppercase tracking-widest mb-1 text-muted-foreground">
+        <span className="font-[family-name:var(--font-label)] text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-1 text-muted-foreground">
           {pillar.subtitle}
         </span>
         <span
@@ -116,7 +116,7 @@ export function IntegratedSolutions() {
         <ScrollReveal className="mb-6 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
-            <span className="font-[family-name:var(--font-label)] text-sm font-normal tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
+            <span className="font-[family-name:var(--font-label)] text-sm font-bold tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
               Integrated Solution, Powered by iQ.AI
             </span>
             <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
@@ -164,7 +164,7 @@ export function IntegratedSolutions() {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <p className="font-[family-name:var(--font-label)] text-xs font-normal uppercase tracking-widest text-[oklch(0.46_0.01_85)] mb-2">
+              <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-widest text-[oklch(0.46_0.01_85)] mb-2">
                 {current.subtitle}
               </p>
               <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-bold text-foreground mb-3">

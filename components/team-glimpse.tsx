@@ -29,7 +29,7 @@ export function TeamGlimpse() {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-12 bg-primary" />
-              <span className="font-[family-name:var(--font-label)] text-sm font-normal tracking-wider uppercase text-primary">
+              <span className="font-[family-name:var(--font-label)] text-sm font-bold tracking-wider uppercase text-primary">
                 The Team
               </span>
             </div>

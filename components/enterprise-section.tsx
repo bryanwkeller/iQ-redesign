@@ -158,7 +158,7 @@ function DataCard({
 }) {
   return (
     <div className="h-full rounded-xl border border-white/10 bg-white/[0.05] shadow-sm p-6 lg:p-7 flex flex-col">
-      <p className="font-[family-name:var(--font-label)] text-xs font-normal uppercase tracking-widest text-primary mb-3">{eyebrow}</p>
+      <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-widest text-primary mb-3">{eyebrow}</p>
       <h3 className="font-[family-name:var(--font-display)] text-lg md:text-xl font-bold text-white leading-snug mb-1">
         {title}
       </h3>

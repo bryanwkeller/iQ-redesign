@@ -126,7 +126,7 @@ function LayerCardContent({ layer }: { layer: LayerCard }) {
             <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
           </div>
           <div className="min-w-0">
-            <p className="font-[family-name:var(--font-label)] text-xs font-normal uppercase tracking-wider text-primary mb-1">
+            <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wider text-primary mb-1">
               {layer.eyebrow}
             </p>
             <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-bold text-foreground leading-tight">
@@ -145,7 +145,7 @@ function LayerCardContent({ layer }: { layer: LayerCard }) {
         </div>
 
         <div className="mt-auto rounded-lg bg-secondary/80 border border-border/60 p-4">
-          <p className="font-[family-name:var(--font-label)] text-xs font-normal uppercase tracking-wider text-[oklch(0.46_0.01_85)] mb-3">
+          <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wider text-[oklch(0.46_0.01_85)] mb-3">
             Powered by
           </p>
           <ul className="space-y-2">
@@ -203,7 +203,7 @@ export function AgenticSolutions() {
         <ScrollReveal className="mb-12 text-center max-w-3xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
-            <span className="font-[family-name:var(--font-label)] text-sm font-normal tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
+            <span className="font-[family-name:var(--font-label)] text-sm font-bold tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
               Agentic Solutions
             </span>
             <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />

@@ -47,7 +47,7 @@ export function RecognitionTrust() {
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-4 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110">
                   <item.icon className="h-7 w-7" />
                 </div>
-                <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-foreground mb-3">
+                <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-foreground mb-3 [text-shadow:0.5px_0_0_currentColor,-0.5px_0_0_currentColor,0_0.5px_0_currentColor,0_-0.5px_0_currentColor]">
                   {item.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">

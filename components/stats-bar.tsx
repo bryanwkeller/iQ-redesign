@@ -51,7 +51,7 @@ export function StatsBar() {
             <StaggerItem key={stat.headline + stat.description}>
               <HoverCard borderAnimation className="p-6 h-full">
                 {stat.eyebrow && (
-                  <p className="font-[family-name:var(--font-label)] text-sm font-normal text-[oklch(0.46_0.01_85)] uppercase tracking-wide mb-2">
+                  <p className="font-[family-name:var(--font-label)] text-sm font-bold text-[oklch(0.46_0.01_85)] uppercase tracking-wide mb-2">
                     {stat.eyebrow}
                   </p>
                 )}

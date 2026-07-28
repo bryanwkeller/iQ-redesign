@@ -125,6 +125,9 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Area Normal's Regular cut renders visibly lighter than Inter's; synthetically
+       thicken strokes site-wide since no true Medium weight is available in the kit. */
+    text-shadow: 0.2px 0 0 currentColor, -0.2px 0 0 currentColor;
   }
   html {
     scroll-behavior: smooth;

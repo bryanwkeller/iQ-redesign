@@ -95,7 +95,7 @@ export function LatestNews() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
-              <span className="font-[family-name:var(--font-label)] text-sm font-normal tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
+              <span className="font-[family-name:var(--font-label)] text-sm font-bold tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
                 Latest at iQuanti
               </span>
             </div>
@@ -157,12 +157,12 @@ export function LatestNews() {
                       <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary">
                         <Play className="h-3 w-3 text-primary-foreground fill-current" />
                       </span>
-                      <span className="font-[family-name:var(--font-label)] text-xs font-normal uppercase tracking-widest text-white">
+                      <span className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-widest text-white">
                         {slide.category}
                       </span>
                     </span>
                   ) : (
-                    <span className="font-[family-name:var(--font-label)] inline-flex items-center mb-5 rounded-full bg-white/15 backdrop-blur-sm px-3 py-1.5 text-xs font-normal uppercase tracking-widest text-white">
+                    <span className="font-[family-name:var(--font-label)] inline-flex items-center mb-5 rounded-full bg-white/15 backdrop-blur-sm px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-white">
                       {slide.category}
                     </span>
                   )}
@@ -188,7 +188,7 @@ export function LatestNews() {
                   )}
                   <Link
                     href={slide.href}
-                    className="font-[family-name:var(--font-label)] inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-normal uppercase tracking-wide text-primary-foreground transition-transform hover:scale-105 group/cta whitespace-nowrap"
+                    className="font-[family-name:var(--font-label)] inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-105 group/cta whitespace-nowrap"
                   >
                     {slide.cta}
                     <ArrowRight className="h-4 w-4 transition-transform group-hover/cta:translate-x-1" />
