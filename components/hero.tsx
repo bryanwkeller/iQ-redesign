@@ -224,7 +224,7 @@ export function Hero() {
           >
             <a href="#solutions">
               <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 group h-12 px-8">
-                Explore Solutions
+                <span className="[text-shadow:0.3px_0_0_currentColor,-0.3px_0_0_currentColor]">Explore Solutions</span>
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </a>
