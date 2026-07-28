@@ -55,7 +55,7 @@ export function StatsBar() {
                     {stat.eyebrow}
                   </p>
                 )}
-                <p className="font-[family-name:var(--font-numeral)] text-3xl md:text-4xl font-thin text-foreground mb-3 leading-tight">
+                <p className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-foreground mb-3 leading-tight">
                   {stat.headline}
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
