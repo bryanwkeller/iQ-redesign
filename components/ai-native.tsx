@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
 import {
   Accordion,
   AccordionContent,
@@ -10,36 +9,21 @@ import {
 } from "@/components/ui/accordion"
 import { ScrollReveal } from "@/components/scroll-reveal"
 
-const products = [
+const pillars = [
   {
-    name: "SIERA",
-    category: "Organic & Search",
-    description: "Multi-surface search intelligence — SEO, GEO & LLM visibility in one engine.",
+    name: "AI for Visibility",
+    description:
+      "Unifying SEO, AIO, and GEO into one orchestrated system so your brand is present and authoritative across every search surface, from traditional engines to LLMs.",
   },
   {
-    name: "LEAP",
-    category: "SEO Intelligence",
-    description: "UX scoring to prototyping, end to end — with BFSI intelligence built in.",
+    name: "AI for Performance",
+    description:
+      "Predictive gap scoring, AI-led paid media planning, and creative intelligence identifying the highest-value opportunities and activating against them faster than competitors can react.",
   },
   {
-    name: "ALPS",
-    category: "Creative Intelligence",
-    description: "Predictive SEO gap scoring that surfaces growth opportunities first.",
-  },
-  {
-    name: "CreativeiQ",
-    category: "Agentic AI",
-    description: "AI creative auditing that accelerates ad production at scale.",
-  },
-  {
-    name: "Agentic Suite",
-    category: "Paid Media",
-    description: "Agentic AI embedded across the full iQuanti solution stack.",
-  },
-  {
-    name: "Omnichannel Paid Hub",
-    category: "Paid Media",
-    description: "AI-led paid planning, activation & optimization across every channel.",
+    name: "AI for Experience",
+    description:
+      "End-to-end AI-driven UX scoring, test ideation, and conversion optimization turning consumer behavior signals into measurable lift across every regulated journey.",
   },
 ]
 
@@ -65,30 +49,22 @@ export function AiNative() {
 
           <ScrollReveal delay={0.15}>
             <Accordion type="single" collapsible className="w-full space-y-3">
-              {products.map((product) => (
+              {pillars.map((pillar) => (
                 <motion.div
-                  key={product.name}
+                  key={pillar.name}
                   whileHover={{ x: 4, transition: { duration: 0.2 } }}
                 >
                   <AccordionItem
-                    value={product.name}
+                    value={pillar.name}
                     className="border border-white/10 rounded-xl px-4 bg-white/[0.06] shadow-sm transition-all duration-300 hover:border-primary/40 hover:bg-white/[0.09] data-[state=open]:border-primary/50 data-[state=open]:bg-white/[0.09]"
                   >
                     <AccordionTrigger className="hover:no-underline py-5 [&[data-state=open]>svg]:text-primary [&>svg]:text-white/40">
-                      <div className="flex flex-col items-start gap-2 text-left">
-                        <span className="font-[family-name:var(--font-display)] text-lg font-bold text-white">
-                          {product.name}
-                        </span>
-                        <Badge
-                          variant="secondary"
-                          className="text-xs font-normal bg-white/10 text-white/60 border-0 hover:bg-white/10"
-                        >
-                          {product.category}
-                        </Badge>
-                      </div>
+                      <span className="font-[family-name:var(--font-display)] text-lg font-bold text-white text-left">
+                        {pillar.name}
+                      </span>
                     </AccordionTrigger>
                     <AccordionContent className="text-white/55 leading-relaxed pb-5">
-                      {product.description}
+                      {pillar.description}
                     </AccordionContent>
                   </AccordionItem>
                 </motion.div>
