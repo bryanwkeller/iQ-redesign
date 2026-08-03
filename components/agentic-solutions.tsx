@@ -1,6 +1,8 @@
 "use client"
 
-import { BarChart3, Megaphone, Cpu, Palette, type LucideIcon } from "lucide-react"
+import { useState } from "react"
+import { BarChart3, Megaphone, Cpu, Palette, ChevronDown, type LucideIcon } from "lucide-react"
+import { AnimatePresence, motion } from "framer-motion"
 import { HoverCard } from "@/components/hover-card"
 import { ScrollReveal } from "@/components/scroll-reveal"
 
@@ -13,6 +15,7 @@ type LayerCard = {
   icon: LucideIcon
   eyebrow: string
   title: string
+  summary: string
   description: string
   capabilities: string[]
   poweredBy: PoweredByItem[]
@@ -22,6 +25,7 @@ const intelligenceLayer: LayerCard = {
   icon: BarChart3,
   eyebrow: "Intelligence Layer",
   title: "Marketing Analytics",
+  summary: "Turning data into a clear, measurable read on what's actually working.",
   description:
     "Enabling smarter, data-driven decisions through advanced measurement — MMM, MTA, and Incrementality — to quantify true marketing impact and effectiveness.",
   capabilities: [
@@ -42,6 +46,7 @@ const activationLayer: LayerCard = {
   icon: Megaphone,
   eyebrow: "Activation Layer",
   title: "Performance Marketing",
+  summary: "Full-funnel media that maximizes ROI across every owned and paid channel.",
   description:
     "Full-funnel performance marketing that maximizes ROI across owned and paid channels powered by AI/Agentic AI and the predictive ALPS model for SEO, GEO, and LLMs.",
   capabilities: ["SEO", "GEO/AIO", "Paid Search", "Paid Social", "Programmatic", "ASO"],
@@ -65,6 +70,7 @@ const enablementLayer: LayerCard = {
   icon: Cpu,
   eyebrow: "Enablement Layer",
   title: "Marketing Technology",
+  summary: "MarTech and CDP infrastructure built to power personalization at scale.",
   description:
     "Unlocking MarTech value across content, CDPs, and personalization to drive targeted experiences and web & app development powered by Adobe, Salesforce, and scalable cloud partnerships.",
   capabilities: [
@@ -90,6 +96,7 @@ const experienceLayer: LayerCard = {
   icon: Palette,
   eyebrow: "Experience Layer",
   title: "Creative Design & Experience Optimization",
+  summary: "AI-driven design and testing that turns more visitors into customers.",
   description:
     "AI/ML-driven content and experiences with LEAP that spans across strategy, design, and production, powered by advanced UX scoring, testing, and in-house expertise.",
   capabilities: [
@@ -117,11 +124,12 @@ const experienceLayer: LayerCard = {
 
 function LayerCardContent({ layer }: { layer: LayerCard }) {
   const Icon = layer.icon
+  const [open, setOpen] = useState(false)
 
   return (
     <HoverCard className="h-full flex flex-col">
       <div className="p-6 lg:p-7 flex flex-col flex-1">
-        <div className="flex items-start gap-4 mb-5">
+        <div className="flex items-start gap-4 mb-4">
           <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary">
             <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
           </div>
@@ -135,29 +143,64 @@ function LayerCardContent({ layer }: { layer: LayerCard }) {
           </div>
         </div>
 
-        <p className="text-sm text-muted-foreground leading-relaxed mb-5">{layer.description}</p>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-4">{layer.summary}</p>
 
-        <div className="mb-5">
-          <p className="text-sm font-semibold text-foreground mb-2">Capabilities:</p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            {layer.capabilities.join(" · ")}
-          </p>
+        <div className="flex flex-wrap gap-1.5 mb-5">
+          {layer.capabilities.map((cap) => (
+            <span
+              key={cap}
+              className="text-xs font-medium text-foreground/80 bg-secondary/80 border border-border/50 rounded-full px-2.5 py-1"
+            >
+              {cap}
+            </span>
+          ))}
         </div>
 
-        <div className="mt-auto rounded-lg bg-secondary/80 border border-border/60 p-4">
-          <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wider text-[oklch(0.46_0.01_85)] mb-3">
-            Powered by
-          </p>
-          <ul className="space-y-2">
-            {layer.poweredBy.map((item) => (
-              <li key={item.name} className="text-sm text-muted-foreground leading-relaxed">
-                <span className="font-semibold text-foreground">{item.name}</span>
-                {", "}
-                {item.description}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all self-start"
+        >
+          {open ? "Hide details" : "View details"}
+          <ChevronDown
+            className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+            aria-hidden="true"
+          />
+        </button>
+
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="pt-4 mt-4 border-t border-border/60">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  {layer.description}
+                </p>
+
+                <div className="rounded-lg bg-secondary/80 border border-border/60 p-4">
+                  <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wider text-[oklch(0.46_0.01_85)] mb-3">
+                    Powered by
+                  </p>
+                  <ul className="space-y-2">
+                    {layer.poweredBy.map((item) => (
+                      <li key={item.name} className="text-sm text-muted-foreground leading-relaxed">
+                        <span className="font-semibold text-foreground">{item.name}</span>
+                        {", "}
+                        {item.description}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </HoverCard>
   )
