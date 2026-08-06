@@ -127,7 +127,7 @@ export function Navigation() {
             whileTap={{ scale: 0.98 }}
           >
             <a href="#contact" onClick={(e) => scrollToSection(e, "#contact")}>
-              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button size="sm" className="bg-primary-ink text-primary-foreground hover:bg-primary-ink/90">
                 Contact Us
               </Button>
             </a>
@@ -213,7 +213,7 @@ export function Navigation() {
                     className="pt-2 px-4"
                   >
                     <a href="#contact" className="block" onClick={(e) => { scrollToSection(e, "#contact"); setIsMobileMenuOpen(false) }}>
-                      <Button size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                      <Button size="sm" className="w-full bg-primary-ink text-primary-foreground hover:bg-primary-ink/90">
                         Contact Us
                       </Button>
                     </a>

@@ -112,7 +112,7 @@ export function Footer() {
                 className="flex-1"
                 required
               />
-              <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90 shrink-0">
+              <Button type="submit" className="bg-primary-ink text-primary-foreground hover:bg-primary-ink/90 shrink-0">
                 Subscribe
               </Button>
             </form>

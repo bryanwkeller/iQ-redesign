@@ -202,7 +202,7 @@ export function ContactForm() {
                   type="submit"
                   size="lg"
                   disabled={!privacyAccepted}
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                  className="w-full bg-primary-ink text-primary-foreground hover:bg-primary-ink/90"
                 >
                   Contact Us
                 </Button>

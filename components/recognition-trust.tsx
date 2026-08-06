@@ -44,7 +44,7 @@ export function RecognitionTrust() {
           {recognitions.map((item) => (
             <StaggerItem key={item.title}>
               <HoverCard className="p-6 h-full text-center">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary-ink/10 text-primary-ink mb-4 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary-ink/10 text-primary-ink mb-4 transition-all duration-300 group-hover:bg-primary-ink group-hover:text-primary-foreground group-hover:scale-110">
                   <item.icon className="h-7 w-7" />
                 </div>
                 <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-foreground mb-3 [text-shadow:0.3px_0_0_currentColor,-0.3px_0_0_currentColor]">

@@ -204,7 +204,7 @@ export function Hero() {
             className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground leading-[1.05] tracking-tight mb-6 text-balance font-bold"
           >
             Turn Every Consumer Signal Into{" "}
-            <span className="text-primary-ink">Enterprise Growth</span>
+            <span className="text-primary-headline">Enterprise Growth</span>
           </motion.h1>
 
           <motion.p
@@ -223,7 +223,7 @@ export function Hero() {
             className="flex flex-wrap items-center gap-4"
           >
             <a href="#solutions">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 group h-12 px-8">
+              <Button size="lg" className="bg-primary-ink text-primary-foreground hover:bg-primary-ink/90 group h-12 px-8">
                 <span className="[text-shadow:0.3px_0_0_currentColor,-0.3px_0_0_currentColor]">Explore Solutions</span>
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>

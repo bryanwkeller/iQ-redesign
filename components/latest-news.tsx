@@ -154,7 +154,7 @@ export function LatestNews() {
                 <div className="flex-1 min-w-0">
                   {slide.isWebinar ? (
                     <span className="inline-flex items-center gap-2 mb-5 rounded-full bg-white/15 backdrop-blur-sm pl-1.5 pr-3 py-1.5">
-                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary">
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary-ink">
                         <Play className="h-3 w-3 text-primary-foreground fill-current" />
                       </span>
                       <span className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-widest text-white">
@@ -188,7 +188,7 @@ export function LatestNews() {
                   )}
                   <Link
                     href={slide.href}
-                    className="font-[family-name:var(--font-label)] inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-105 group/cta whitespace-nowrap"
+                    className="font-[family-name:var(--font-label)] inline-flex items-center gap-2 rounded-full bg-primary-ink px-6 py-3 text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-105 group/cta whitespace-nowrap"
                   >
                     {slide.cta}
                     <ArrowRight className="h-4 w-4 transition-transform group-hover/cta:translate-x-1" />

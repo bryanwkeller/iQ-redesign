@@ -252,7 +252,7 @@ export function AgenticSolutions() {
             <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
           </div>
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-bold leading-tight">
-            Powered by <span className="text-primary-ink">iQ.Impact</span>
+            Powered by <span className="text-primary-headline">iQ.Impact</span>
           </h2>
         </ScrollReveal>
 
