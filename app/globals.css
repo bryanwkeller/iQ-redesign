@@ -17,7 +17,14 @@
   
   /* iQuanti brand orange — hue aligned to official iQ Orange (#FF8500), lightness/chroma tuned for WCAG contrast */
   --primary: oklch(0.68 0.19 55.13);
-  --primary-foreground: oklch(0.99 0 0);
+  /* White text on brand orange only reaches ~2.9:1 (fails WCAG AA for both text and UI
+     components). Dark ink on top of the orange fill passes at ~6.2:1, so buttons/badges
+     use dark text instead of white. */
+  --primary-foreground: oklch(0.18 0.01 250);
+  /* Deeper orange (same hue/chroma, lower lightness) for orange TEXT/icons placed directly
+     on light backgrounds — the brand orange itself only hits ~2.9:1 there and fails WCAG AA;
+     this variant reaches ~4.7:1. Not used for solid button fills, only text/icon color. */
+  --primary-ink: oklch(0.56 0.19 55.13);
   
   /* Secondary - warm cream */
   --secondary: oklch(0.94 0.012 85);
@@ -29,7 +36,7 @@
   
   /* Accent - same as primary for consistency */
   --accent: oklch(0.68 0.19 55.13);
-  --accent-foreground: oklch(0.99 0 0);
+  --accent-foreground: oklch(0.18 0.01 250);
   
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0 0);
@@ -49,7 +56,7 @@
   --sidebar: oklch(0.97 0.008 85);
   --sidebar-foreground: oklch(0.18 0.01 250);
   --sidebar-primary: oklch(0.68 0.19 55.13);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-primary-foreground: oklch(0.18 0.01 250);
   --sidebar-accent: oklch(0.94 0.012 85);
   --sidebar-accent-foreground: oklch(0.18 0.01 250);
   --sidebar-border: oklch(0.88 0.015 85);
@@ -80,6 +87,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-ink: var(--primary-ink);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);

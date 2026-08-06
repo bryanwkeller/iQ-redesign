@@ -62,7 +62,7 @@ export function CaseStudies() {
                   </p>
                   <a
                     href="#"
-                    className="mt-auto inline-flex items-center text-sm font-semibold text-primary hover:gap-2.5 gap-1.5 transition-all"
+                    className="mt-auto inline-flex items-center text-sm font-semibold text-primary-ink hover:gap-2.5 gap-1.5 transition-all"
                   >
                     Read case study
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -76,7 +76,7 @@ export function CaseStudies() {
         <ScrollReveal delay={0.15} className="flex justify-center mt-10">
           <Button
             variant="outline"
-            className="border-foreground/20 hover:bg-secondary group"
+            className="border-foreground/20 hover:bg-secondary hover:text-foreground group"
           >
             More Case Studies
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

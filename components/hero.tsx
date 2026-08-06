@@ -204,7 +204,7 @@ export function Hero() {
             className="font-[family-name:var(--font-display)] text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground leading-[1.05] tracking-tight mb-6 text-balance font-bold"
           >
             Turn Every Consumer Signal Into{" "}
-            <span className="text-primary">Enterprise Growth</span>
+            <span className="text-primary-ink">Enterprise Growth</span>
           </motion.h1>
 
           <motion.p

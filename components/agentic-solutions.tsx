@@ -130,11 +130,11 @@ function LayerCardContent({ layer }: { layer: LayerCard }) {
     <HoverCard className="h-full flex flex-col">
       <div className="p-6 lg:p-7 flex flex-col flex-1">
         <div className="flex items-start gap-4 mb-4">
-          <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary">
+          <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-lg bg-primary-ink/10 text-primary-ink">
             <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
           </div>
           <div className="min-w-0">
-            <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wider text-primary mb-1">
+            <p className="font-[family-name:var(--font-label)] text-xs font-bold uppercase tracking-wider text-primary-ink mb-1">
               {layer.eyebrow}
             </p>
             <h3 className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-bold text-foreground leading-tight">
@@ -160,7 +160,7 @@ function LayerCardContent({ layer }: { layer: LayerCard }) {
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all self-start"
+          className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-primary-ink hover:gap-2.5 transition-all self-start"
         >
           {open ? "Hide details" : "View details"}
           <ChevronDown
@@ -252,7 +252,7 @@ export function AgenticSolutions() {
             <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
           </div>
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-bold leading-tight">
-            Powered by <span className="text-primary">iQ.Impact</span>
+            Powered by <span className="text-primary-ink">iQ.Impact</span>
           </h2>
         </ScrollReveal>
 

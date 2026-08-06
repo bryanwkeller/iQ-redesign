@@ -74,7 +74,7 @@ export function ContactForm() {
           >
             {submitted ? (
               <div className="bg-card border border-border rounded-2xl p-10 flex flex-col items-center text-center gap-4">
-                <CheckCircle2 className="h-12 w-12 text-primary" />
+                <CheckCircle2 className="h-12 w-12 text-primary-ink" />
                 <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-foreground">
                   We&apos;ll be in touch soon.
                 </h3>
