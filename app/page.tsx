@@ -4,6 +4,7 @@ import { StatsBar } from "@/components/stats-bar"
 import { EnterpriseSection } from "@/components/enterprise-section"
 import { LatestNews } from "@/components/latest-news"
 import { AgenticSolutions } from "@/components/agentic-solutions"
+import { CaseStudies } from "@/components/case-studies"
 import { Insights } from "@/components/insights"
 import { AiNative } from "@/components/ai-native"
 import { RecognitionTrust } from "@/components/recognition-trust"
@@ -21,6 +22,7 @@ export default function Home() {
         <LatestNews />
         <AgenticSolutions />
         <AiNative />
+        <CaseStudies />
         <Insights />
         <RecognitionTrust />
         <ContactForm />

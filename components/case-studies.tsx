@@ -1,121 +1,87 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
 import { ArrowRight } from "lucide-react"
-import Link from "next/link"
-import { useRef } from "react"
+import { Button } from "@/components/ui/button"
+import { HoverCard } from "@/components/hover-card"
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const caseStudies = [
   {
     category: "Uniform Services",
-    title: "UniFirst Paid Search Transformation",
-    stat: "3.7x more leads",
+    title: "How UniFirst Drove 3.7X More Leads with Smarter Paid Search Aligned to Business Demand",
     description:
-      "A strategic transformation of UniFirst's paid search program delivered significant lead growth during a critical business cycle.",
+      "UniFirst's paid search program underwent a strategic transformation to support performance goals during a key business cycle.",
   },
   {
     category: "Digital Banking",
-    title: "Laurel Road AI Optimization",
-    stat: "152% uplift in form fills",
+    title: "152% Uplift in Form Fill Starts for Laurel Road Achieved Through AI-Led LEAP Optimization Framework",
     description:
-      "Laurel Road partnered with iQuanti to improve conversion performance using our LEAP optimization framework.",
+      "Laurel Road, a digital banking platform and a subsidiary of KeyBank, partnered with iQuanti to improve conversion performance.",
   },
   {
     category: "Healthcare Finance",
-    title: "Laurel Road Digital Experience",
-    stat: "Reimagined banking UX",
+    title: "How Laurel Road Reimagined Banking and Finance for Healthcare Professionals",
     description:
-      "A digital banking platform tailored for healthcare professionals, built around their unique financial needs.",
+      "A digital experience tailor-made for healthcare professionals, built around the unique financial needs of the profession.",
   },
 ]
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.25, 0.1, 0.25, 1],
-    },
-  },
-}
-
 export function CaseStudies() {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" })
-
   return (
-    <section id="insights" className="py-24 lg:py-32 border-y border-border">
-      <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl mb-16"
-        >
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-foreground mb-4 font-bold">
-            Client Stories
+    <section id="case-studies" className="py-16 lg:py-24 bg-background">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-12">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
+            <span className="font-[family-name:var(--font-label)] text-sm font-bold tracking-wider uppercase text-[oklch(0.46_0.01_85)]">
+              Our Success Stories
+            </span>
+            <div className="h-px w-12 bg-[oklch(0.46_0.01_85)]" />
+          </div>
+          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-foreground font-bold leading-tight mb-4">
+            Case Studies
           </h2>
-          <p className="text-lg text-muted-foreground">
-            How we help our clients achieve measurable growth.
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            See how we&apos;ve helped our clients win at digital marketing.
           </p>
-        </motion.div>
+        </ScrollReveal>
 
-        {/* Case Studies Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-6"
-        >
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {caseStudies.map((study) => (
-            <motion.div
-              key={study.title}
-              variants={cardVariants}
-              className="group p-8 rounded-xl border border-border bg-card hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300"
-            >
-              {/* Category Tag */}
-              <div className="inline-flex px-3 py-1 rounded-full bg-secondary text-foreground text-xs font-medium mb-4">
-                {study.category}
-              </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-semibold text-foreground mb-2">
-                {study.title}
-              </h3>
-
-              {/* Stat */}
-              <div className="text-2xl font-[family-name:var(--font-display)] text-primary mb-4 font-bold">
-                {study.stat}
-              </div>
-
-              {/* Description */}
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                {study.description}
-              </p>
-
-              {/* Link */}
-              <Link
-                href="#"
-                className="inline-flex items-center text-sm font-medium text-foreground hover:text-primary transition-colors group/link"
-              >
-                Read the story
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-              </Link>
-            </motion.div>
+            <StaggerItem key={study.title}>
+              <HoverCard className="h-full">
+                <div className="p-6 lg:p-7 flex flex-col h-full">
+                  <span className="inline-flex w-fit px-3 py-1 rounded-full bg-secondary text-foreground text-xs font-semibold mb-4">
+                    {study.category}
+                  </span>
+                  <h3 className="font-[family-name:var(--font-display)] text-lg md:text-xl font-bold text-foreground leading-snug mb-3">
+                    {study.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                    {study.description}
+                  </p>
+                  <a
+                    href="#"
+                    className="mt-auto inline-flex items-center text-sm font-semibold text-primary hover:gap-2.5 gap-1.5 transition-all"
+                  >
+                    Read case study
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                </div>
+              </HoverCard>
+            </StaggerItem>
           ))}
-        </motion.div>
+        </StaggerContainer>
+
+        <ScrollReveal delay={0.15} className="flex justify-center mt-10">
+          <Button
+            variant="outline"
+            className="border-foreground/20 hover:bg-secondary group"
+          >
+            More Case Studies
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </ScrollReveal>
       </div>
     </section>
   )
